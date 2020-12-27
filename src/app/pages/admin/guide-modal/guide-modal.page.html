@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{guide.title ? 'Edit Guide: '+guide.title : 'New Guide'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-buttons>
+      <ng-container *ngFor="let lang of ds.languages">
+        <ion-button fill="outline" class="text-btn" [color]="eLang==lang.code ? 'light' : 'primary'"
+          (click)="eLang=lang.code">
+          {{ lang.short_name }}
+        </ion-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-row>
+      <ion-col>
+        <ion-label>Title: </ion-label>
+        <ng-container *ngIf="eLang=='en'; else title">
+          <ion-input type="text" [(ngModel)]="guide.title"></ion-input>
+        </ng-container>
+        <ng-template #title>
+          <ion-input type="text" [(ngModel)]="guide[eLang]['title']"></ion-input>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Body: </ion-label>
+        <ng-container *ngIf="eLang=='en'; else body">
+          <ion-textarea [(ngModel)]="guide.desc" [attr.rows]="5"></ion-textarea>
+        </ng-container>
+        <ng-template #body>
+          <ion-textarea [(ngModel)]="guide[eLang]['desc']" [attr.rows]="5"></ion-textarea>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Escort#: </ion-label>
+        <ion-input type="text" [(ngModel)]="guide.escort"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Writer:</ion-label>
+        <ng-container *ngIf="eLang=='en'; else writer">
+          <ion-input type="text" [(ngModel)]="guide.writer"></ion-input>
+        </ng-container>
+        <ng-template #writer>
+          <ion-input type="text" [(ngModel)]="guide[eLang]['writer']"></ion-input>
+        </ng-template>
+      </ion-col>
+      <ion-col class="guide-image" (click)="clickUploadImage()">
+        <ion-label class="upload-btn">Upload image: </ion-label>
+        <ion-label>
+          <img *ngIf="guide.image" [src]="guide.image">
+          <input type="file" (change)="uploadImage($event)" #fileInp style="display:none" />
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Top Guide: </ion-label>
+        <ion-checkbox [(ngModel)]="guide.top" class="circle-radio"></ion-checkbox>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-text-center ion-no-border">
+  <ion-buttons class="ion-justify-content-evenly">
+    <ng-container *ngIf="guide && guide.title; else new">
+      <ion-button fill="outline" class="ion-text-underline text-btn" (click)="savePost()">Save Changes</ion-button>
+      <ion-button fill="outline" class="ion-text-underline text-btn" (click)="revertChanges()">Revert</ion-button>
+    </ng-container>
+    <ng-template #new>
+      <ion-button fill="outline" class="ion-text-underline text-btn" (click)="savePost()">Post</ion-button>
+      <ion-button fill="outline" class="ion-text-underline text-btn" (click)="close()">Cancel</ion-button>
+    </ng-template>
+  </ion-buttons>
+</ion-footer>

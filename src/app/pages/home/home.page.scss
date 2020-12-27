@@ -1,0 +1,260 @@
+ion-content {
+  --overflow: hidden;
+}
+
+.country-section {
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+
+  ion-button {
+    height: 38px;
+    --border-radius: 8px;
+    opacity: 0.6;
+
+    ion-label {
+      color: white;
+    }
+  }
+
+  .current-country {
+    margin-top: -8px;
+
+    p {
+      color: white;
+    }
+
+    h4 {
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    img {
+      position: absolute;
+      width: 30px;
+      top: -4px;
+      left: 8px;
+      z-index: 2;
+    }
+
+    ion-button {
+      height: 52px;
+      opacity: 1;
+
+      ion-label {
+        width: 100%;
+        padding-left: 12px;
+      }
+    }
+  }
+}
+
+.home-bottom-bg {
+  position: absolute;
+  width: 100%;
+  bottom: 8px;
+  --bullet-background: #000;
+  --bullet-background-active: #fff;
+  z-index: 2;
+
+  .swiper-slide img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+/** Animation Style **/
+.btn-search {
+  &.non-active {
+    display: none;
+  }
+}
+
+.anima-wrapper {
+  background-color: #545454;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  max-width: 100%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 90px;
+}
+
+.anima-wrapper.anima-first {
+  background-color: #191919;
+  z-index: 2;
+}
+
+.anima-wrapper.anima-second {
+  background-image: url('/assets/images/bg-human.png');
+  z-index: 1;
+}
+
+@media only screen and (min-width: 420px) {
+  .anima-wrapper {
+    background-size: cover;
+  }
+}
+
+.outer-border {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  padding: 30px 0;
+  color: #717171;
+  font-size: 36px;
+  font-weight: bold;
+  border: 2px solid #1b4080;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.inner-border {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.border-gray {
+  border: 2px solid #505050;
+}
+
+.border-blue {
+  opacity: 0;
+  border: 2px solid #41b3e2;
+}
+
+.border-blue::before,
+.border-blue::after {
+  position: absolute;
+  top: 50%;
+  content: '';
+  display: block;
+  width: 40px;
+  height: 100px;
+  background-color: #191919;
+  transform: translateY(-50%);
+}
+
+.border-blue::before {
+  left: -10px;
+}
+
+.border-blue::after {
+  right: -10px;
+}
+
+.text-wrapper {
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.text-wrapper span {
+  display: block;
+  text-align: center;
+  min-width: 100%;
+}
+
+.text-wrapper span.text-second {
+  color: #fff;
+}
+
+.radar-stick {
+  background-image: url('/assets/icon/radar-stick.svg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: 450px;
+  width: 100%;
+  position: absolute;
+}
+
+.map-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('/assets/images/road-map.png');
+  background-size: cover;
+  opacity: 0;
+  background-repeat: no-repeat;
+}
+
+.light-box {
+  width: 200px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 20px;
+  z-index: 9;
+
+  img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0px 0px 8px #0981e8);
+  }
+}
+
+.dots-wrap .dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #0fb9b9;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.dots-wrap .dot.dt-1 {
+  top: 130px;
+  left: 50px;
+}
+
+.dots-wrap .dot.dt-2 {
+  top: 250px;
+  right: 50px;
+}
+
+.dots-wrap .dot.dt-3 {
+  bottom: 200px;
+  left: 60px;
+}
+
+.dots-wrap .dot.dt-4 {
+  bottom: 120px;
+  left: 150px;
+}

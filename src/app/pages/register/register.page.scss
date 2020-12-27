@@ -1,0 +1,36 @@
+ion-content {
+  --background: var(--ion-color-toolbar-bg);
+
+  form {
+    ion-item {
+      --background: transparent;
+    }
+  }
+
+  .fuck-btn {
+    margin-top: 32px;
+  }
+
+  .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--ion-color-medium);
+    font-size: 12px;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--ion-color-medium);
+    }
+
+    &::before {
+      margin-right: 16px;
+    }
+
+    &::after {
+      margin-left: 16px;
+    }
+  }
+}

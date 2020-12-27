@@ -1,0 +1,26 @@
+<ion-content class="ion-padding admin-content">
+  <ion-grid>
+    <p class="doc-title">User:</p>
+    <ion-row *ngFor="let userDoc of documents; let i=index;">
+      <div *ngIf="userDoc.type === 'user'">
+        <ion-col size="6" (click)="openPDF(i)">{{userDoc.name}}</ion-col>
+        <ion-col size="6" (click)="upload(i)">UPLOAD NEW</ion-col>
+      </div>
+    </ion-row>
+    <p class="doc-title">Escort:</p>
+    <ion-row *ngFor="let escortDoc of documents; let j=index;">
+      <div *ngIf="escortDoc.type === 'escort'">
+        <ion-col size="6" (click)="openPDF(j)">{{escortDoc.name}}</ion-col>
+        <ion-col size="6" (click)="upload(j)">UPLOAD NEW</ion-col>
+      </div>
+    </ion-row>
+    <p class="doc-title">Guide:</p>
+    <ion-row *ngFor="let guideDoc of documents; let k=index;">
+      <div *ngIf="guideDoc.type === 'guide'">
+        <ion-col size="6" (click)="openPDF(k)">{{guideDoc.name}}</ion-col>
+        <ion-col size="6" (click)="upload(k)">UPLOAD NEW</ion-col>
+      </div>
+    </ion-row>
+    <input #fileInp type="file" (change)="onFileChange($event)" style="display: none" accept=".pdf">
+  </ion-grid>
+</ion-content>

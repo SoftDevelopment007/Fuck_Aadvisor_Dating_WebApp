@@ -1,0 +1,13 @@
+<ion-content (click)="close()"></ion-content>
+
+<ion-footer class="ion-no-padding">
+  <ion-list lines="full">
+    <ion-item *ngFor="let suburb of suburbs" (click)="selectSuburb(suburb)">
+      <ion-label>{{ suburb }}</ion-label>
+    </ion-item>
+    <ion-list-header (click)="close()">
+      <ion-icon name="chevron-up"></ion-icon>
+      close suburbs list
+    </ion-list-header>
+  </ion-list>
+</ion-footer>

@@ -1,0 +1,153 @@
+.title,
+p,
+ion-text {
+  color: var(--ion-color-medium);
+  font-size: 14px;
+}
+
+ion-col[size="4"] {
+  margin-bottom: 15px;
+
+  .mainImage {
+    img {
+      border: 1px solid var(--ion-color-primary);
+    }
+  }
+
+  .girl-card {
+    height: 58px;
+
+    img {
+      width: 98%;
+      height: 58px;
+      max-height: 100%;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+
+    span {
+      background: var(--ion-color-gray-border);
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      text-align: center;
+      border: 3px solid var(--ion-color-dark3);
+      position: absolute;
+      top: -4px;
+      right: -4px;
+
+      ion-icon {
+        font-size: 1em;
+        color: var(--ion-color-light);
+
+      }
+    }
+  }
+
+  &.img-default {
+    .girl-card {
+      border: .55px solid var(--ion-color-gray-border);
+      border-radius: 5px;
+
+      span {
+        width: 45px;
+        height: 45px;
+        position: relative;
+        border-radius: 50%;
+        border: 1px solid var(--ion-color-primary);
+        background: none !important;
+        transform: translate(40%, 20%);
+
+        ion-icon {
+          font-size: 30px;
+          margin-top: 5px;
+          color: var(--ion-color-primary);
+          transform: translate(0%, 10%);
+        }
+      }
+    }
+  }
+}
+
+.video-cam ion-col {
+  .girl-card {
+    border: .55px solid var(--ion-color-gray-border);
+    border-radius: 5px;
+
+    span {
+      width: 45px;
+      height: 45px;
+      position: relative;
+      border-radius: 50%;
+      border: 1px solid var(--ion-color-primary);
+      background: none !important;
+      transform: translate(40%, 20%);
+
+      ion-icon {
+        font-size: 30px;
+        margin-top: 5px;
+        color: var(--ion-color-primary);
+        transform: translate(0%, 10%);
+      }
+    }
+  }
+}
+
+.get-from-photo {
+  margin-bottom: 16px;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  background: black;
+  border-radius: 12px;
+
+  span {
+    font-size: 12px;
+    color: var(--ion-color-light);
+  }
+
+  .pro-left {
+    text-align: left;
+    padding-left: 16px;
+
+    ion-checkbox {
+      width: 21px;
+      height: 21px;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+  }
+
+  .pro-price {
+    text-align: right;
+    margin-bottom: 0;
+    padding-right: 16px;
+
+    p {
+      margin: 0;
+
+      a:first-child {
+        color: var(--ion-color-light);
+        text-decoration: line-through;
+      }
+
+      a:last-child {
+        color: #51bb5f;
+      }
+    }
+
+    span {
+      font-size: 10px;
+      float: right;
+    }
+  }
+
+  .more-views ion-col {
+    font-size: 14px;
+    color: var(--ion-color-medium);
+  }
+
+  .view-sample {
+    color: #65bbe8;
+  }
+}

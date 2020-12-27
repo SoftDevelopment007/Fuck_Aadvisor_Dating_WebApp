@@ -1,0 +1,45 @@
+.upgrade-content {
+  display: flex;
+
+  ion-segment {
+    display: block;
+    min-width: 120px;
+    margin-left: 1px;
+    background-color: #242424;
+    order: 2;
+
+    ion-segment-button {
+      --indicator-color: transparent;
+      --indicator-box-shadow: none;
+
+      &.segment-button-checked {
+        border: 2px solid var(--ion-color-primary);
+      }
+
+      &.selected {
+        color: var(--ion-color-primary) !important;
+      }
+    }
+  }
+
+  .upgrade-detail {
+    min-width: 140px;
+    order: 1;
+
+    ion-list {
+      background: transparent !important;
+
+      ion-button {
+        display: table;
+
+        &.selected {
+          color: var(--ion-color-primary) !important;
+        }
+      }
+
+      &.category-list ion-button {
+        display: inline-grid;
+      }
+    }
+  }
+}

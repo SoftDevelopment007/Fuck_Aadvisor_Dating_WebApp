@@ -1,0 +1,7 @@
+{
+  "name": "fuckadvisor",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

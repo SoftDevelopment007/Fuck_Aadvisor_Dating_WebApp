@@ -1,0 +1,45 @@
+<ion-content class="ion-padding admin-content">
+  <ion-grid>
+    <ion-row class="grid-header">
+      <ion-col class="dot">ST</ion-col>
+      <ion-col>#</ion-col>
+      <ion-col>Name</ion-col>
+      <ion-col>Age</ion-col>
+      <ion-col>Phone</ion-col>
+      <ion-col>ID</ion-col>
+      <ion-col>Ethnic</ion-col>
+      <ion-col>Category</ion-col>
+      <ion-col>Primary Info</ion-col>
+      <ion-col>Secondary Info</ion-col>
+      <ion-col>Media</ion-col>
+      <ion-col>Upgrades</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let escort of escorts | paginate: { itemsPerPage: pn, currentPage: p }">
+      <ion-col class="dot" (click)="openEscortUsageModal(escort)">
+        <span [class.greendot]="escort.usage > 0">&nbsp;</span>
+      </ion-col>
+      <ion-col>{{escort.index}}</ion-col>
+      <ion-col>{{escort.name}}</ion-col>
+      <ion-col>{{escort.age}}</ion-col>
+      <ion-col>{{escort.phone}}</ion-col>
+      <ion-col (click)="viewID(escort)" fa-text>View</ion-col>
+      <ion-col>{{escort.ethnic}}</ion-col>
+      <ion-col>{{escort.category}}</ion-col>
+      <ion-col (click)="viewPrimaryInfo(escort)" fa-text>View</ion-col>
+      <ion-col (click)="viewSecondaryInfo(escort)" fa-text>View</ion-col>
+      <ion-col>
+        <span (click)="viewPicture(escort)" fa-text>
+          Pic({{escort.image ? escort.image.length : 0}})
+        </span>
+        <span (click)="viewVideo(escort)" fa-text>
+          Vid({{escort.video ? 1: 0}})
+        </span>
+      </ion-col>
+      <ion-col (click)="showEscortUpgrade($event, escort)" fa-text>View({{escort.upgarde_count}})</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="guide-pagination">
+  <pagination-controls (pageChange)="p = $event" previousLabel="Prev" [maxSize]="pn"></pagination-controls>
+</ion-footer>

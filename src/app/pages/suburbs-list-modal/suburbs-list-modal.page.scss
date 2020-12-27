@@ -1,0 +1,29 @@
+ion-content {
+  --background: transparent !important;
+}
+
+ion-footer {
+  width: calc(100% - 32px);
+  top: 118px;
+  left: 16px;
+  overflow-y: scroll;
+
+  ion-item {
+    --color: white;
+    --background: #242424;
+
+    ion-label {
+      padding-left: 24px;
+    }
+  }
+
+  ion-list-header {
+    ion-label {
+      color: white;
+
+      ion-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+}

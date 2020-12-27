@@ -1,0 +1,15 @@
+<ion-content class="ion-padding admin-content">
+  <ion-grid>
+    <ion-row *ngFor="let country of ds.config.countryList">
+      <ion-col size="6">{{ country.name }}</ion-col>
+      <ng-container *ngIf="country.name != ds.config.country; else selected">
+        <ion-col size="6" class="change-btn" (click)="changeCountry(country.name)">
+          CHANGE
+        </ion-col>
+      </ng-container>
+      <ng-template #selected>
+        <ion-col size="6">SELECTED</ion-col>
+      </ng-template>
+    </ion-row>
+  </ion-grid>
+</ion-content>

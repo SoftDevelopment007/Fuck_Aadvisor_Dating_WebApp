@@ -1,0 +1,55 @@
+ion-toolbar {
+  ion-searchbar.fuck-searchbar {
+    width: 95%;
+    margin: 0 8px;
+  }
+
+  ion-buttons {
+    height: 44px;
+
+    button {
+      color: white;
+      font-size: 17px;
+      background: transparent;
+      outline: unset !important;
+    }
+  }
+}
+
+.search-group {
+  p {
+    color: white;
+
+    a {
+      float: right;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+  ion-row {
+    ion-col {
+      display: contents;
+      margin-right: 8px;
+      padding: 0;
+      flex-grow: unset;
+
+      button {
+        height: 32px;
+        margin: 4px 2px;
+        padding: 0 10px;
+        color: #00CDFF;
+        font-size: 16px;
+        border-radius: 4px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #3877FF;
+        background-color: transparent;
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<ion-content class="ion-padding admin-content">
+  <ion-grid>
+    <ion-row>
+      <ion-col>User E-mail</ion-col>
+      <ion-col>Recover Password/Email Link</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let user of users">
+      <ion-col>{{user.email}}</ion-col>
+      <ion-col fa-text (click)="openRecoverLink(user)">Send link</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="guide-pagination">
+  <pagination-controls (pageChange)="p = $event" previousLabel="Prev" [maxSize]="pn"></pagination-controls>
+</ion-footer>

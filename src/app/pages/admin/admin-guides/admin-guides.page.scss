@@ -1,0 +1,36 @@
+.new-guide {
+  margin-left: 16px;
+  margin-bottom: 0;
+}
+
+ion-grid {
+  padding-top: 16px;
+
+  ion-col {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.dot {
+  max-width: 80px;
+
+  >span {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--ion-color-danger);
+    cursor: pointer;
+
+    &.greendot {
+      background-color: var(--ion-color-light-green);
+    }
+  }
+}
+
+ion-footer {
+  left: 125px;
+}

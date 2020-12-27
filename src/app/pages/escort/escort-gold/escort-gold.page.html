@@ -1,0 +1,95 @@
+<app-escort-header :href="{{href}}"></app-escort-header>
+
+<ion-content class="ion-padding">
+  <ion-grid *ngIf="ds.escort">
+    <ion-row class="checkbox-agree">
+      <ion-col>
+        <ion-item *ngIf="ds.upgrades" lines="none" class="ion-no-padding">
+          <ion-checkbox [(ngModel)]="ds.upgrades.gold.status" slot="start" checked="true" class="fuck-checkbox"
+            (ionChange)="toggleCheckbox($event, 1)">
+          </ion-checkbox>
+          <ion-label>Gold Combo</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <div class="text">
+      <p class="ion-no-margin">
+        <ion-icon name="checkmark"></ion-icon>
+        87% more views than basic listing.
+      </p>
+      <p>
+        <ion-icon name="checkmark"></ion-icon>
+        42% more Watchlist adds than basic listing.
+      </p>
+      <p>
+        <ion-icon name="checkmark"></ion-icon>
+        Be seen before search results in the Super Feature carousel
+      </p>
+    </div>
+
+    <ion-row class="ion-text-center">
+      <span class="view-sample" (click)="viewSample()">View Gold Listing Sample</span>
+    </ion-row>
+
+    <ion-row *ngIf="ds.upgrades">
+      <ion-col size="6" class="months-section">
+        <ion-row [ngClass]="{ 'active-month': ds.upgrades.gold.index === 1 }">
+          <ion-col>
+            <ion-icon name="remove" (click)="changeGoldMonth(-1)"></ion-icon>
+          </ion-col>
+          <ion-col (click)="changeGoldMonth()">
+            <p>{{ ds.upgrades.gold.value }}</p>
+            <span>months</span>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="add" (click)="changeGoldMonth(1)"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="3" class="months-section">
+        <ion-row [ngClass]="{ 'active-month': ds.upgrades.gold.index === 2 }">
+          <ion-col size="10" (click)="ds.upgrades.gold.index = 2; ds.upgrades.gold.months = 12">
+            <p>12</p>
+            <span>months</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="3" class="months-section">
+        <ion-row [ngClass]="{ 'active-month': ds.upgrades.gold.index === 3 }">
+          <ion-col size="10" (click)="ds.upgrades.gold.index = 3; ds.upgrades.gold.months = 24">
+            <p>24</p>
+            <span>months</span>
+            <div class="corner"><span>40% Off</span></div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <p class="ion-text-or">OR</p>
+
+    <ion-row class="checkbox-agree">
+      <ion-col size="7">
+        <ion-item lines="none" class="ion-no-padding">
+          <ion-checkbox [(ngModel)]="!ds.escort.gold" slot="start" checked="false" class="fuck-checkbox"
+            (ionChange)="toggleCheckbox($event)">
+          </ion-checkbox>
+          <ion-label>Free Listing</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+      <ion-col size="3"></ion-col>
+    </ion-row>
+    <div class="text">
+      <p class="ion-no-margin">
+        <ion-icon name="close" class="close-icon"></ion-icon>
+        87% more views than basic listing.
+      </p>
+    </div>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" routerLink="/tabs/escort/upgrade" routerDirection="forward">
+    Start
+  </ion-button>
+
+  <div class="escort-step">Step 3 of 4 Upgrades</div>
+</ion-content>

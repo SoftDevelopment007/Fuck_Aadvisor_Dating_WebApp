@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home Banner Images</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="banners && banners.length>0" class="main-slide">
+    <div class="girl-card">
+      <img [src]="banners[sIndex]" />
+    </div>
+  </div>
+
+  <div class="ion-text-center upload-section">
+    <ion-text color="primary" (click)="choosePic()">Upload Banner</ion-text>
+    <input type="file" (change)="uploadBanner($event)" #filePic accept="image/*;capture=camera" style="display:none" />
+  </div>
+
+  <div class="thumb-slide">
+    <ion-slides #thumbSlides [options]="thumbSlideOpts">
+      <ion-slide *ngFor="let image of banners;let i=index;" (click)="sIndex=i">
+        <div class="girl-card" [class.active]="sIndex==i">
+          <img [src]="image" />
+          <ion-icon name="trash" (click)="deleteMedia(i)"></ion-icon>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

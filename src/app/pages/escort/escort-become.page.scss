@@ -1,0 +1,78 @@
+.logo-text p {
+  margin: 11% auto 0;
+  color: var(--ion-color-primary);
+}
+
+.field-input {
+  margin: 0px 16px 20px 16px;
+  border: 0.55px solid var(--ion-color-gray-border);
+  padding: 2px 16px;
+  border-radius: 30px;
+  position: relative;
+  color: var(--ion-color-medium);
+
+  label {
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background: var(--ion-color-dark3);
+    padding: 5px;
+    font-size: 12px;
+    color: var(--ion-color-gray-border);
+  }
+
+  .text-input {
+    margin: 0;
+  }
+}
+
+.industry {
+  background: transparent;
+
+  ion-list-header {
+    padding-left: 0;
+    align-items: center;
+    color: var(--ion-color-medium);
+    font-size: 14px;
+
+    .collapse-icon {
+      position: absolute;
+      right: 5px;
+      top: 8px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+
+  .pdf-list {
+    transition: 1s all linear;
+
+    ion-item {
+      --background: #242424;
+
+      .fuck-btn {
+        height: 36px;
+        margin: 0 16px 0 0;
+      }
+
+      h5 {
+        color: white;
+        ;
+        font-size: 12px;
+      }
+
+      .time {
+        color: #8e9093;
+        font-size: 12px;
+      }
+
+      .type-file {
+        color: var(--ion-color-gray);
+        border-radius: 5px;
+        padding: 10px 5px;
+        vertical-align: bottom;
+        font-size: 14px;
+      }
+    }
+  }
+}

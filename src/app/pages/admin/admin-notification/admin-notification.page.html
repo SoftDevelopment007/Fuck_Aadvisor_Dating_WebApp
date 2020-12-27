@@ -1,0 +1,10 @@
+<ion-content class="ion-padding admin-content">
+  <div class="notification-body">
+    <ion-textarea [(ngModel)]="message" autofocus rows="10"></ion-textarea>
+    <div class="button-group">
+      <p (click)="sendMessage('all')">Send to All</p>
+      <p (click)="sendMessage('escort')">Send to All Escorts</p>
+      <p (click)="sendMessage('user')">Send to All Users</p>
+    </div>
+  </div>
+</ion-content>

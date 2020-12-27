@@ -1,0 +1,19 @@
+<ion-content class="ion-padding admin-content">
+  <form [formGroup]="passwordForm" (ngSubmit)="onSubmit(passwordForm.value)">
+    <ion-list lines="none">
+      <ion-item>
+        <ion-label>Old Password</ion-label>
+        <ion-input type="password" [formControl]="passwordForm.controls['oldPassword']" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>New Password</ion-label>
+        <ion-input type="password" [formControl]="passwordForm.controls['newPassword']" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Confirm New Password</ion-label>
+        <ion-input type="password" [formControl]="passwordForm.controls['confirmPassword']" required></ion-input>
+      </ion-item>
+      <button type="submit" class="change-btn">Change</button>
+    </ion-list>
+  </form>
+</ion-content>

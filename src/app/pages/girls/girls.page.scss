@@ -1,0 +1,208 @@
+.premium-video {
+  position: relative;
+
+  .videoPlayer {
+    width: 100%;
+    min-height: 200px;
+    height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .premium-image {
+    width: 100%;
+    height: 250px;
+    min-height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .premium-detail {
+    background: rgb(65, 65, 65);
+    width: calc(100% - 16px);
+    margin: -4px auto 0;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    .girl-bottom {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 18px;
+      color: white;
+      vertical-align: middle;
+      cursor: pointer;
+
+      .dot-online {
+        background-color: var(--ion-color-light-green);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 4px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .girl-city {
+        margin-top: 4px;
+        margin-left: -12px;
+        font-size: 16px;
+        color: var(--ion-color-medium);
+      }
+    }
+
+    .detail-date {
+      padding: 0;
+      color: white;
+
+      h4 {
+        margin-bottom: 2px;
+        text-transform: uppercase;
+      }
+
+      p {
+        margin: 0;
+        font-size: 10px;
+      }
+    }
+
+    img {
+      height: 60px;
+      width: auto;
+    }
+  }
+}
+
+.searchbar-input {
+  border: 1px solid var(--ion-color-gray-border);
+  border-radius: 30px !important;
+}
+
+.header-select {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+
+  img {
+    width: 18px;
+    height: 20px;
+    margin-right: 12px;
+  }
+
+  .area-section {
+    width: 30%;
+
+    .area-btn {
+      width: 100%;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      font-size: 11px;
+      font-weight: 500;
+      color: #999;
+      background-color: transparent;
+      text-transform: capitalize;
+      box-shadow: none;
+      white-space: pre-wrap;
+      outline: none !important;
+      border: 1px solid #999;
+      border-radius: 4px;
+
+      &.selected {
+        margin-top: 4px;
+        text-align: right;
+        font-size: 11px;
+        color: var(--ion-color-primary);
+      }
+
+      ion-icon {
+        margin-left: 4px;
+        color: #636363;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .category-ethnic {
+    display: flex;
+    width: calc(70% - 46px);
+    margin-left: 16px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    justify-content: space-around;
+
+    ion-select {
+      max-width: 100%;
+      padding: 4px 3px;
+      font-size: 11px;
+      font-weight: 500;
+
+      .select-icon {
+        cursor: pointer;
+      }
+
+      .item-cover {
+        width: 10px;
+        height: 10px;
+      }
+
+      .select-text {
+        white-space: unset;
+        text-align: right;
+        overflow: unset;
+        text-overflow: unset;
+      }
+
+      &.selected {
+        .select-text,
+        .select-icon-inner {
+          color: var(--ion-color-primary);
+        }
+      }
+    }
+  }
+}
+
+.section-title {
+  margin: 24px 0 0 8px;
+  color: var(--ion-color-medium);
+}
+
+.filter-label {
+  font-size: 12px;
+
+  a {
+    margin-left: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
+
+.girls-list {
+  .girl-card .girl-image {
+    height: 230px;
+    max-height: 100%;
+  }
+}
+
+.no-result {
+  margin: 20% 0;
+
+  h4 {
+    margin-bottom: 32px;
+    color: white;
+  }
+
+  a {
+    color: #017dff;
+    font-size: 24px;
+    text-decoration: underline;
+  }
+}
+
+ion-footer {
+  background-color: var(--ion-color-dark3);
+}

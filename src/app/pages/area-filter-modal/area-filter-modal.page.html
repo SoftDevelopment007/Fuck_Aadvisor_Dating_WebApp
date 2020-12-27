@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="arrow-back" slot="icon-only" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">Area Filter</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="search-section">
+    <ion-searchbar (ionChange)="filterAreas($event)" placeholder="Search"></ion-searchbar>
+    <ion-list lines="full">
+      <div *ngIf="searchText">
+        <ion-item *ngFor="let suburb of suburbs" (click)="selectSuburbs(suburb)">
+          <ion-label>{{ suburb }}</ion-label>
+        </ion-item>
+      </div>
+      <ion-list-header *ngIf="!suburbs_modal_status" (click)="openSuburbs()">
+        <ion-icon name="chevron-down"></ion-icon>
+        see suburbs list
+      </ion-list-header>
+    </ion-list>
+    <p *ngIf="sel_suburbs" class="sel-suburbs">
+      "{{ sel_suburbs }}" is in {{ sel_area }}&nbsp;&nbsp;{{ sel_area }} is selected
+    </p>
+  </div>
+
+  <div class="apply-section">
+    <img src="/assets/images/nearby-button.png" (click)="clickNearButton()" />
+    <p *ngIf="sel_area">
+      Selected Filter <a>{{ sel_area }}</a>
+      <a (click)="clearSelectedArea()" class="cancel-btn">Cancel</a>
+    </p>
+    <p *ngIf="!sel_area">Current Filter: None</p>
+    <ion-button expand="block" [color]="sel_area ? 'primary': 'medium'" (click)="apply()">
+      Apply
+    </ion-button>
+  </div>
+</ion-content>

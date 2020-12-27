@@ -1,0 +1,95 @@
+<ion-header>
+  <div class="chat-notification" [class.display-none]="is_hide_notification" (click)="navigate_to_contact_page()">
+    <img src="{{pre_notifications.avatar_url}}" style="display: inline-block" />
+    <div class="content">
+      <p>{{pre_notifications.last_message}}</p>
+    </div>
+  </div>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
+      </ion-button>
+      <ion-item lines="none" class="ion-no-padding toggle-section">
+        <ion-label>
+          <img src="assets/icon/translate.svg" class="translate-svg" />
+        </ion-label>
+        <ion-toggle [(ngModel)]="is_translate_on" (ionChange)="toggle_translate()" class="toggle-small"></ion-toggle>
+      </ion-item>
+    </ion-buttons>
+    <ion-title> {{receiver?.name}} </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="settings-outline" (click)="navigate_to_trans_setting_page()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-padding">
+        <ng-template ngFor let-chat [ngForOf]="chats" let-i="index">
+          <div *ngIf="chat.type!='init'" class="messages">
+            <ion-row *ngIf="chat.sender!==sender.id" class="messages-received">
+              <ion-col size="2">
+                <img src="{{ receiver['avatar'] || ds.default_image }}" />
+              </ion-col>
+              <ion-col size="8">
+                <div style="width: 100%; min-height: 30px">
+                  <div class="content">
+                    <span *ngIf="!is_translate_on">{{chat.msg}}<br /> </span>
+                    <span *ngIf="is_translate_on">{{get_translate_msg(i)}}<br /> </span>
+                  </div>
+                </div>
+                <p class="time">{{get_agotime(chat.sendDate)}}</p>
+              </ion-col>
+            </ion-row>
+            <ion-row class="messages-sent" *ngIf="chat.sender===sender.id">
+              <ion-col size="4"> </ion-col>
+              <ion-col size="8">
+                <div style="width: 100%; min-height: 30px">
+                  <div class="content">
+                    <span *ngIf="!is_translate_on">{{chat.msg}}<br /> </span>
+                    <span *ngIf="is_translate_on">{{get_translate_msg(i)}}<br /> </span>
+                  </div>
+                </div>
+                <p class="time">{{get_agotime(chat.sendDate)}}</p>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div *ngIf="chat.type=='init'" class="confirm-message">
+            {{chat.msg}}<br />
+            All messages will be deleted in 72 hours.<br />
+            <span *ngIf="sender.type=='user'">For future chat, please save listing to saved.</span>
+          </div>
+        </ng-template>
+        <div class="typing" *ngIf="typing_state===true">
+          <p>typing ....</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="leftChats.length>0" ion-fixed class="more-msg" (click)="loadOldMessages()">
+    <a>Jump to previous messages</a>
+    <ion-icon name="arrow-up"></ion-icon>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-textarea
+      [(ngModel)]="data.msg"
+      (keyup.enter)="sendMessage()"
+      (click)="touch_input_box()"
+      (ionChange)="on_typing()"
+      rows="2"
+      placeholder="Write a replay .."
+    >
+    </ion-textarea>
+    <ion-buttons slot="primary">
+      <ion-button (click)="sendMessage()">
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

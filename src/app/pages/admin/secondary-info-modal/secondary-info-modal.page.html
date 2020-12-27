@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>#{{escort?.index}} Secondary Information</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-grid>
+    <ion-buttons>
+      <ng-container *ngFor="let lang of ds.languages">
+        <ion-button fill="outline" class="text-btn" [color]="eLang==lang.code ? 'light' : 'primary'"
+          (click)="eLang=lang.code">
+          {{ lang.short_name }}
+        </ion-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-row>
+      <ion-col>
+        <ion-label>Address:</ion-label>
+        <ion-input type="text" #address [(ngModel)]="oldData.address" class="address"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="area">
+        <ion-label>Area</ion-label>
+        <ion-select [(ngModel)]="oldData.area" cancelText="Nah" okText="Okay!" placeholder="Select Area">
+          <ion-select-option *ngFor="let a of ds.config.areas" [value]="a.name">
+            {{ a.name }}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col class="ethnicity">
+        <ion-label>Ethnicity:</ion-label>
+        <ion-select [(ngModel)]="oldData.ethnic" cancelText="Nah" okText="Okay!" placeholder="Select Ethnicity">
+          <ion-select-option *ngFor="let eth of ds.config.ethnicities" [value]="eth">
+            {{ eth }}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col class="category">
+        <ion-label>Category:</ion-label>
+        <ion-select [(ngModel)]="oldData.category[0]" cancelText="Nah" okText="Okay!" placeholder="Select Category">
+          <ion-select-option *ngFor="let cat of categories" [value]="cat">
+            {{ cat }}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row class="rate-section">
+      <ion-col>
+        <ion-label>Room:</ion-label>
+        <span>$</span>
+        <ion-input [(ngModel)]="rate.room"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-label>Clean:</ion-label>
+        <span>$</span>
+        <ion-input [(ngModel)]="rate.cleaning"></ion-input>
+      </ion-col>
+      <ion-col>
+        <ion-item lines="none" class="gst-item">
+          <ion-checkbox [(ngModel)]="gst" slot="start"></ion-checkbox>
+          <ion-label>GST</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        <ion-label>Services:</ion-label>
+      </ion-col>
+      <ion-col size="10" class="services-list">
+        <ion-grid class="ion-no-padding">
+          <ion-row *ngFor="let service of services;let i=index;">
+            <ion-col size="12">
+              <ion-input [(ngModel)]="service.name"></ion-input>
+              <span>$</span>
+              <ion-input [(ngModel)]="service.price" placeholder="Add Price" class="sPrice"></ion-input>
+              <ion-button fill="outline" color="danger" class="text-btn" (click)="removeService(i)">Remove</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+    <ion-row class="contact-confirm">
+      <ion-col>
+        <ion-label>Contact to confirm: </ion-label>
+        <ion-radio-group [(ngModel)]="contactStatus">
+          <div class="contact-left">
+            <ion-radio value="1"></ion-radio>
+            <ion-label>Yes</ion-label>
+          </div>
+          <div class="contact-right">
+            <ion-radio value="0"></ion-radio>
+            <ion-label>No</ion-label>
+          </div>
+        </ion-radio-group>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="contactStatus=='0'" class="schedules">
+    <ion-row *ngFor="let schedule of schedules;let i=index;">
+      <ion-col size="3">{{schedule.name}}</ion-col>
+      <ion-col size="9" class="ion-text-right">
+        <ion-datetime displayFormat="hh:mm a" [(ngModel)]="schedule.from"></ion-datetime>
+        <span class="to">to</span>
+        <ion-datetime displayFormat="hh:mm a" [(ngModel)]="schedule.to"></ion-datetime>
+        <ion-button fill="outline" color="danger" class="text-btn" (click)="resetSchedule(i)">Reset</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-text-center ion-no-border">
+  <ion-buttons class="ion-justify-content-evenly">
+    <ion-button fill="outline" class="ion-text-underline text-btn" (click)="saveChanges()">Save Changes</ion-button>
+    <ion-button fill="outline" class="ion-text-underline text-btn" (click)="revertChanges()">Revert</ion-button>
+  </ion-buttons>
+</ion-footer>

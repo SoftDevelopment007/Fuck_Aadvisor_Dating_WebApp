@@ -1,0 +1,146 @@
+ion-content {
+  --background: var(--ion-color-dark4);
+}
+
+.checkbox-agree {
+  font-size: 12px;
+
+  ion-item {
+    --padding-start: 0;
+    color: var(--ion-color-medium);
+    font-size: 14px;
+    --background: transparent;
+
+    ion-label {
+      margin-right: 0;
+      font-size: 11px;
+    }
+  }
+}
+
+.sold {
+  color: var(--ion-color-danger) !important;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.price {
+  line-height: 3.5em;
+  padding: 5px 0;
+  color: var(--ion-color-medium);
+}
+
+.text {
+  p {
+    color: var(--ion-color-medium);
+
+    ion-icon {
+      margin-right: 5px;
+      color: var(--ion-color-secondary);
+      font-size: 22px;
+    }
+  }
+}
+
+ion-icon.close-icon {
+  color: var(--ion-color-danger) !important;
+}
+
+.pre-purchase {
+  margin-top: 0;
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  padding-left: 45px;
+}
+
+.add-category {
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  text-align: left;
+  --border-radius: 4px;
+  --background: #191919;
+
+  ion-icon {
+    margin-right: 12px;
+  }
+}
+
+.upgrade {
+  width: calc(100% + 42px);
+  margin-left: -21px;
+  margin-bottom: 32px;
+  padding: 4px 16px;
+  background-color: rgba(85, 85, 85, 0.6);
+
+  ion-icon {
+    font-size: 32px;
+    color: gray;
+  }
+
+  .upgrade-list {
+    h6 {
+      color: white;
+    }
+
+    p {
+      margin: 0;
+      font-size: 16px;
+      color: var(--ion-color-medium);
+    }
+
+    .discount {
+      color: white;
+    }
+
+    h3 {
+      color: white;
+    }
+
+    ion-col:last-child {
+      p {
+        color: white;
+      }
+
+      .discount-amount {
+        color: var(--ion-color-medium);
+        text-decoration: line-through !important;
+      }
+    }
+  }
+}
+
+ion-card {
+  width: 100%;
+  margin: 12px 0;
+  background: black;
+  border-radius: 8px;
+
+  ion-row.checkbox-agree {
+    ion-col {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      p {
+        margin: 0;
+
+        span {
+          font-size: 11px;
+        }
+      }
+
+      .green {
+        color: green;
+      }
+    }
+  }
+
+  .more-views ion-col {
+    color: var(--ion-color-medium);
+  }
+
+  .view-sample {
+    color: #65bbe8;
+    margin: 12px auto;
+  }
+}

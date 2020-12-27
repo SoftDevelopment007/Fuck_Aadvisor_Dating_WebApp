@@ -1,0 +1,29 @@
+<ion-content class="ion-padding admin-content">
+  <p fa-text (click)="openGuide()" class="new-guide">New Guide</p>
+  <ion-grid>
+    <ion-row class="grid-header">
+      <ion-col class="dot">Status</ion-col>
+      <ion-col class="dot">Date</ion-col>
+      <ion-col>Guides</ion-col>
+      <ion-col>Escort#</ion-col>
+      <ion-col>Writer</ion-col>
+      <ion-col class="dot">Top Guide</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let guide of guides | paginate: { itemsPerPage: pn, currentPage: p }">
+      <ion-col class="dot" (click)="openGuideActiveModal(guide)">
+        <span [class.greendot]="guide.status=='active'">&nbsp;</span>
+      </ion-col>
+      <ion-col class="dot">{{guide.created_at | standardDate}}</ion-col>
+      <ion-col fa-text (click)="openGuide(guide)">{{guide.title}}</ion-col>
+      <ion-col fa-text (click)="openGuide(guide)">{{guide.escort}}</ion-col>
+      <ion-col fa-text (click)="openGuide(guide)">{{guide.writer}}</ion-col>
+      <ion-col class="dot">
+        <ion-checkbox [(ngModel)]="guide.top" class="circle-radio" (ionChange)="selectTopGuide(guide)"></ion-checkbox>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="guide-pagination">
+  <pagination-controls (pageChange)="p = $event" previousLabel="Prev" [maxSize]="pn"></pagination-controls>
+</ion-footer>

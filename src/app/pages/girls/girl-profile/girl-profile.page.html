@@ -1,0 +1,186 @@
+<ion-content [scrollEvents]="true" (ionScroll)="onScroll($event)">
+  <ion-toolbar class="fixed-header" [ngClass]="{'active': scrollDown}" [class.messageDot]="ds.notification">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()" class="back-btn">
+        <ion-icon name="chevron-back" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ app.transText(girl, 'name') }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="share()" slot="start">
+        <ion-icon name="share-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+      <ion-button (click)="girlStar()" slot="end" class="star-btn" [ngClass]="{ 'active': girl.saved }">
+        <ion-icon [name]="girl?.saved ? 'star' : 'star-outline'" slot="icon-only">
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ng-container *ngIf="girl">
+      <ion-slides #girlSlides loop="true" class="slide-image-girl" (ionSlideDidChange)="slideChanged($event)">
+        <ng-container *ngFor="let image of girlImages">
+          <ion-slide *ngIf="image=='video'">
+            <div class="girl-card">
+              <video id="videoRef" class="videoPlayer" muted loop="loop" playsinline>
+              </video>
+            </div>
+          </ion-slide>
+          <ion-slide *ngIf="image!='video'">
+            <div class="girl-card">
+              <img [src]="image" />
+            </div>
+          </ion-slide>
+        </ng-container>
+      </ion-slides>
+
+      <div *ngIf="girl.video || girl.image" class="swiper-pagination video-pager">
+        <app-progress-bar *ngIf="girl.video" [progress]="loadProgress" [sIndex]="slideIndex" (click)="clickVideoBar()">
+        </app-progress-bar>
+        <ng-container *ngIf="girl.image">
+          <button *ngFor="let image of girl.image;let i=index" class="swiper-pagination-bullet"
+            [class.active]="imageStatus(i)" (click)="imageBar(i)"></button>
+        </ng-container>
+      </div>
+
+      <ion-row>
+        <ion-col size="9">
+          <div class="girl-bottom">
+            <div>
+              <span class="dot-online" [ngClass]="{'offline': !girl.online}">&nbsp;</span>
+            </div>
+            <div>
+              <h2>{{ app.transText(girl, 'name') }}</h2>
+              <p>{{girl.location}}</p>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="3">
+          <div class="girl-continent">
+            <h3>{{girl.age}} {{ 'Years' | translate }}</h3>
+            <p>{{girl.ethnic}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-card class="about-me">
+        <ion-card-header>{{ 'About Me' | translate }}</ion-card-header>
+        <ion-card-content>{{ app.transText(girl, 'desc') }}</ion-card-content>
+      </ion-card>
+
+      <ion-card class="availability">
+        <ion-card-header>
+          {{ 'Availability' | translate }}
+          <div *ngIf="isAvailable" class="available-status">
+            <span class="dot-online">&nbsp;</span>
+            {{girl.online ? 'Online Now' : 'Available Now'}}
+          </div>
+        </ion-card-header>
+        <ion-button *ngIf="girl.contactStatus" class="contact-text" (click)="openChat()">
+          Contact to confirm
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        </ion-button>
+        <ion-grid *ngIf="!girl.contactStatus">
+          <ng-container *ngFor="let schedule of girl.schedules">
+            <ion-row [ngClass]="{'active': schedule.active}">
+              <ion-col size="5">{{schedule.name}}</ion-col>
+              <ion-col size="7" class="ion-text-right">
+                <span>{{schedule.from}}</span> - <span>{{schedule.to}}</span>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ion-grid>
+      </ion-card>
+
+      <ion-card class="fees">
+        <ion-card-header>
+          {{ 'Services and fees' | translate }}
+        </ion-card-header>
+        <ion-grid>
+          <ng-container *ngFor="let service of girl.services">
+            <ion-row *ngIf="service.name">
+              <ion-col size="8">{{service.name}}</ion-col>
+              <ion-col size="4" class="ion-text-right">${{service.price}}</ion-col>
+            </ion-row>
+          </ng-container>
+          <ion-row class="rates">
+            <ion-col size="12">
+              <p>Above Rates Exclude:</p>
+              <p>1) Room booking: ${{girl.rate?.room}} per Session</p>
+              <p>2) Cleaning cost: ${{girl.rate?.cleaning}} per Session</p>
+              <p *ngIf="girl.rate && girl.rate.gst">3) GST: 15% of total price</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ng-container>
+
+    <ion-card class="location">
+      <ion-card-header>
+        {{ 'Location' | translate }}
+      </ion-card-header>
+      <ion-card-content>
+        <h2 *ngIf="girl">{{girl.suburbs}} - <span>{{girl.location}}</span></h2>
+        <a class="girl-map" target="_blank"
+          href="https://www.google.com/maps/search/?api=1&query={{girl.lat}},{{girl.long}}">
+          <div id="map"></div>
+          <p>{{title}}</p>
+        </a>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="distance">
+      <ion-card-header>
+        <small>{{title}} DISTANCE | {{distance}}KM</small> FROM YOU
+      </ion-card-header>
+      <ion-grid *ngIf="travelTime">
+        <ion-row class="ion-padding">
+          <ion-col size="5">By Car</ion-col>
+          <ion-col size="4">{{travelTime.car}}</ion-col>
+          <ion-col size="3">
+            <ion-button fill="outline" expand="block" (click)="openMap('driving')">Navigate</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-padding">
+          <ion-col size="5">By Bus or Train</ion-col>
+          <ion-col size="4">{{travelTime.bus}}</ion-col>
+          <ion-col size="3">
+            <ion-button fill="outline" expand="block" (click)="openMap('transit')">
+              Navigate
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-padding">
+          <ion-col size="5">Walking</ion-col>
+          <ion-col size="4">{{travelTime.walking}}</ion-col>
+          <ion-col size="3">
+            <ion-button fill="outline" expand="block" (click)="openMap('walking')">Navigate</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <div class="ion-padding show-phone-number">
+      <ion-button *ngIf="!phoneShow" color="medium" fill="outline" expand="block" (click)="openPhoneModal()">
+        {{ 'Show Phone Number' | translate }}
+      </ion-button>
+      <ion-button *ngIf="phoneShow" fill="outline" expand="block" href="tel://+1-{{girl.phone}}">
+        {{girl.phone}}
+      </ion-button>
+    </div>
+
+    <h4 class="ion-margin section-title">YOU MAY LIKE</h4>
+  </ion-grid>
+
+  <ion-fab *ngIf="!userId || (user && user.type=='user')" vertical="bottom" horizontal="end" [class.reddot]="unreadUserMessage"
+    slot="fixed">
+    <button ion-button icon-end class="chat-btn" (click)="openChat()">
+      <span class="blinking-cursor">|</span>
+      {{ 'Chat with me' | translate }}...
+      <ion-icon name="send"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

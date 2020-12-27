@@ -1,0 +1,128 @@
+ion-input {
+  font-size: 14px;
+}
+
+.escort-name,
+.age {
+  position: relative;
+  margin: 32px 0px;
+  padding: 1px 16px;
+  border: 0.55px solid var(--ion-color-gray-border);
+  border-radius: 30px;
+
+  ion-col[size="12"] {
+    padding: 0;
+  }
+
+  span {
+    position: absolute;
+    top: -12px;
+    background: var(--ion-color-dark3);
+    padding: 5px;
+    font-size: 12px;
+    color: var(--ion-color-medium);
+
+    b {
+      color: var(--ion-color-danger);
+    }
+  }
+}
+
+.ethnicity,
+.category {
+  position: relative;
+
+  ion-label {
+    display: inline-block !important;
+    position: absolute;
+    top: -10px;
+    left: 17px;
+    padding: 2px 5px 5px 5px;
+    font-size: 12px;
+    color: var(--ion-color-medium);
+    background: var(--ion-color-dark3);
+    z-index: 9;
+
+    b {
+      color: var(--ion-color-danger);
+    }
+  }
+
+  ion-select {
+    max-width: 100%;
+    margin: 20px 0px;
+    padding: 11px 16px;
+    font-size: 14px;
+    border: 0.55px solid var(--ion-color-gray-border);
+    border-radius: 30px;
+
+    .select-icon-inner {
+      left: 12px !important;
+    }
+
+    .item-cover {
+      width: 20px !important;
+      height: 20px !important;
+      position: relative;
+    }
+  }
+}
+
+.location {
+  position: relative;
+  margin: 0 0 10px;
+  padding: 1px 16px;
+  border: 0.55px solid var(--ion-color-gray-border);
+  border-radius: 30px;
+
+  ion-col {
+    padding: 0;
+  }
+
+  .location-icon {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    font-size: 18px;
+    color: #525252;
+  }
+
+  .address {
+    padding-right: 6px;
+  }
+
+  span {
+    position: absolute;
+    top: -12px;
+    background: var(--ion-color-dark3);
+    padding: 5px;
+    font-size: 12px;
+    color: var(--ion-color-medium);
+
+    b {
+      color: var(--ion-color-danger);
+    }
+  }
+}
+
+.gps-location {
+  margin-top: 32px;
+
+  p {
+    font-size: 12px;
+  }
+
+  ion-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: 16px;
+
+    ion-icon {
+      margin-right: 8px;
+      font-size: 18px;
+      color: #2b84e6;
+    }
+  }
+}

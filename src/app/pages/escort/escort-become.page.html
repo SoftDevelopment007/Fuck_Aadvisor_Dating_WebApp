@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="href"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Become an Escort</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <img src="assets/images/escort-logo.png" alt="escort log" />
+      </ion-col>
+      <ion-col size="6" class="logo-text">
+        <p>100% Free to List</p>
+        <p>Go Live Fast</p>
+        <p>Remove Listing Anytime</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="field-input">
+    <label>LEGAL NAME<span class="field-required">*</span></label>
+    <ion-input type="text" [(ngModel)]="ds.escort.lname" placeholder="Please enter your full name"></ion-input>
+  </div>
+
+  <div class="field-input">
+    <label>PHONE<span class="field-required">*</span></label>
+    <ion-input type="tel" [(ngModel)]="ds.escort.phone" [brmasker]="{ mask: '000-000-0000', len: 12 }"
+      placeholder="Enter phone number">
+    </ion-input>
+  </div>
+
+  <ion-list class="ion-margin-bottom industry">
+    <ion-list-header (click)="toggle()">
+      NEW TO THE INDUSTRY?
+      <ion-icon [name]="collapse ? 'chevron-up' : 'chevron-down'" class="collapse-icon">
+      </ion-icon>
+    </ion-list-header>
+    <div *ngIf="collapse" class="pdf-list">
+      <ion-item *ngFor="let pdf of pdfs" (click)="downloadPDF(pdf)">
+        <ion-button slot="start" class="fuck-btn">PDF</ion-button>
+        <ion-label>
+          <h5>{{ pdf.name }}</h5>
+          <p class="time">
+            Updated - <span>{{ pdf.date | dateFormat }}</span>
+          </p>
+        </ion-label>
+        <ion-button color="medium" fill="outline" slot="end">{{ pdf.size | fileSize }}</ion-button>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-button expand="full" class="fuck-btn" [ngClass]="{'fieldDisabled': !ds.escort.lname || !ds.escort.phone}"
+    (click)="goCertification()">
+    Next
+  </ion-button>
+
+  <div class="escort-step">Step 1 of 4 Escort Details</div>
+</ion-content>

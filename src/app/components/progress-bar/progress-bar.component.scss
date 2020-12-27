@@ -1,0 +1,24 @@
+.progress-outer {
+  display: inline-block;
+  width: 24px;
+  background: #252525;
+  opacity: 0.6;
+  pointer-events: auto;
+  cursor: pointer;
+
+  .progress-inner {
+    min-width: 15%;
+    height: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: white;
+  }
+
+  &.inactive {
+    width: 16px;
+
+    .progress-inner {
+      background-color: transparent;
+    }
+  }
+}

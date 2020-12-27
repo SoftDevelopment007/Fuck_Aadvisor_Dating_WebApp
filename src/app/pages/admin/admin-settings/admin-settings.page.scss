@@ -1,0 +1,35 @@
+form {
+  max-width: 650px;
+  padding-top: 10%;
+  padding-left: 10%;
+  position: relative;
+}
+
+ion-list {
+  padding-right: 100px;
+
+  ion-item {
+    margin: 8px 0;
+
+    ion-label {
+      min-width: 175px;
+      color: #000000;
+      font-size: 18px;
+    }
+
+    ion-input {
+      border: 1px solid #000000;
+    }
+  }
+
+  .change-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 0px;
+    color: blue;
+    font-size: 18px;
+    text-decoration: underline;
+    text-transform: capitalize;
+    outline: none !important;
+  }
+}

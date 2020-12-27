@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>#{{escort['index']}} Picture</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="main-slide">
+    <ion-slides #mainSlides [options]="mainSlideOpts">
+      <ion-slide *ngFor="let image of images">
+        <div class="girl-card">
+          <img [src]="image" />
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div *ngIf="status !== 'pending'" class="ion-text-center upload-section">
+    <ion-text color="primary" (click)="choosePic()">Upload Picture</ion-text>
+    <input type="file" (change)="uploadPic($event)" #filePic accept="image/*;capture=camera" style="display:none" />
+  </div>
+
+  <div class="thumb-slide">
+    <ion-slides #thumbSlides (ionSlideDidChange)="thumbSlideChanged($event)" [options]="thumbSlideOpts">
+      <ion-slide *ngFor="let image of images;let i=index;">
+        <div class="girl-card">
+          <img [src]="image" />
+          <ion-icon *ngIf="status !== 'pending'" name="trash" (click)="deleteMedia(i)"></ion-icon>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

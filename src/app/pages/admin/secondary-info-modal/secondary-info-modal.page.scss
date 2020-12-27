@@ -1,0 +1,123 @@
+ion-grid {
+  ion-buttons ion-button {
+    font-weight: bold;
+  }
+
+  ion-col {
+    display: flex;
+    color: white;
+    align-items: center;
+
+    ion-label {
+      min-width: 60px;
+      vertical-align: middle;
+    }
+
+    ion-input,
+    ion-select {
+      flex: 100%;
+      vertical-align: middle;
+      border: 1px solid #fff;
+    }
+
+    ion-select {
+      padding-left: 5px;
+      font-size: 12px;
+      align-items: center;
+    }
+  }
+}
+
+.area ion-select,
+.ethnicity ion-select {
+  min-width: 120px;
+  max-width: 120px;
+}
+
+.category ion-select {
+  min-width: 90px;
+  max-width: 90px;
+}
+
+.rate-section {
+  span {
+    margin-right: 4px;
+  }
+
+  ion-input {
+    padding-left: 8px;
+  }
+
+  .gst-item {
+    --background: transparent;
+    --color: white;
+  }
+}
+
+.services-list {
+  ion-input {
+    padding-left: 8px;
+  }
+
+  span {
+    margin: 0 8px 0 16px;
+  }
+
+  .sPrice {
+    max-width: 80px;
+
+    .text-input {
+      text-align: center;
+    }
+  }
+}
+
+.contact-confirm {
+  ion-label {
+    max-width: 150px;
+  }
+
+  ion-radio {
+    width: 23px;
+    height: 23px;
+    margin-right: 8px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+  }
+
+  .contact-left {
+    float: left;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-right {
+    float: right;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.schedules {
+  ion-col {
+    padding: 0;
+  }
+
+  ion-datetime {
+    position: relative;
+    display: inline-block;
+    min-width: 120px;
+    border: 1px solid #ffff;
+  }
+
+  span {
+    margin: auto 4px;
+  }
+}
+
+ion-footer {
+  ion-buttons {
+    padding: 8px;
+    background: var(--ion-color-toolbar-bg);
+  }
+}

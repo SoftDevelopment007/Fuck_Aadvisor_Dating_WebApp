@@ -1,0 +1,30 @@
+<ion-content class="ion-padding" (click)="closeModal()">
+  <div class="ion-padding cart-body">
+    <p>items: </p>
+    <p *ngIf="proPhoto">
+      - Pro Photo and Video: <a>{{proPhoto.price ? ('$' + proPhoto.price) : 'Free'}}</a></p>
+    <p *ngIf="proWriter">
+      - Writers Service: <a>{{proWriter.price ? ('$' + proWriter.price) : 'Free'}}</a></p>
+    <p *ngFor="let item of items">
+      - {{item.name}}: <a>${{item.price}}</a>
+    </p>
+    <p *ngIf="topListing">
+      - Top in listing: <a>${{topListing}}</a>
+    </p>
+    <p *ngIf="topLocation">
+      - Top in location: <a>${{topLocation}}</a>
+    </p>
+    <p *ngIf="topEthnicity">
+      - Top in ethnicity: <a>${{topEthnicity}}</a>
+    </p>
+    <div *ngFor="let cat of ds.upgrades.category">
+      <p *ngIf="cat.status && upgradeData">
+        - Top in category: <a>${{cat.months * upgradeData.category.price}}</a>
+      </p>
+    </div>
+    <hr />
+    <p>
+      Total: <a>${{totalPrice}}</a>
+    </p>
+  </div>
+</ion-content>

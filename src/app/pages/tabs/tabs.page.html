@@ -1,0 +1,34 @@
+<ion-tabs>
+  <ion-tab-bar #fuckTabBar id="fuckTabBar" slot="bottom" mode="ios">
+    <ion-tab-button tab="home">
+      <ion-label>{{'HOME' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="girls">
+      <ion-label>{{'GIRLS' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="guides">
+      <ion-label>{{'GUIDES' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ng-container *ngIf="auth.authUser?.type=='escort'; else saved">
+      <ion-tab-button tab="manage">
+        <ion-label>{{'MANAGE' | translate }}</ion-label>
+        <ion-badge *ngIf="ds.notification" color="danger">&nbsp;</ion-badge>
+      </ion-tab-button>
+    </ng-container>
+
+    <ng-template #saved>
+      <ion-tab-button tab="saved">
+        <ion-label>{{'SAVED' | translate }}</ion-label>
+      </ion-tab-button>
+    </ng-template>
+
+    <ion-tab-button tab="profile">
+      <ion-label>
+        <span>{{'ME' | translate }}</span>
+      </ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

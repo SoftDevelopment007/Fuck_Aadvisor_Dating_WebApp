@@ -1,0 +1,50 @@
+ion-segment-button {
+  height: 40px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  padding: 0;
+  color: var(--ion-color-medium) !important;
+  --indicator-color: transparent !important;
+
+  img {
+    width: 26px;
+    height: 26px;
+    transform: translate(0, 20%);
+  }
+
+  &.segment-button-checked {
+    color: var(--ion-color-light) !important;
+    border-bottom: 2px solid !important;
+    border-image: linear-gradient(to right, #0066ff 13%, #66ccff 98%) !important;
+    border-image-slice: 1 !important;
+  }
+}
+
+.section-title {
+  margin: 4px 0;
+  padding: 0;
+}
+
+.info {
+  .date {
+    position: absolute;
+    top: 30px;
+    left: 5px;
+    border: 1px solid var(--ion-color-gray-border);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 8px 15px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+
+  ion-col {
+    color: var(--ion-color-medium);
+  }
+}

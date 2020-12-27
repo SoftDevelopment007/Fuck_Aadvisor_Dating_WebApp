@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>#{{eIndex}} Video</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <div class="escort-video">
+    <video *ngIf="video" oncanplay="this.muted=true" autoplay="autoplay" loop="loop">
+      <source [src]="video" type="video/mp4" />
+    </video>
+  </div>
+  <ion-buttons *ngIf="status !== 'pending'" class="ion-margin ion-justify-content-evenly">
+    <ion-button fill="outline" class="text-btn" color="danger" (click)="deleteVideo()">
+      Delete Video
+    </ion-button>
+    <ion-button fill="outline" class="text-btn" (click)="chooseVideo()">
+      Upload Video
+    </ion-button>
+    <input type="file" (change)="uploadVideo($event)" #escortVideo accept="video/mp4,video/x-m4v,video/*"
+      style="display:none" />
+  </ion-buttons>
+</ion-content>

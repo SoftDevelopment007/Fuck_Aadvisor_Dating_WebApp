@@ -1,0 +1,233 @@
+.great-section {
+  padding: 8px;
+  color: white;
+  font-size: 14px;
+  background-color: var(--ion-color-light-green);
+
+  h4 {
+    margin: 0;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  .manager-btn {
+    height: 28px;
+    font-size: 18px;
+    --color: var(--ion-color-light-green);
+    --border-radius: 4px;
+    --background: white;
+  }
+}
+
+ion-grid {
+  padding-right: 0;
+  padding-left: 0;
+
+  ion-card {
+    box-shadow: none !important;
+
+    ion-card-header {
+      padding: 8px 0;
+      color: #444;
+      font-size: 16px;
+    }
+
+    ion-card-content {
+      padding: 0;
+      color: #444;
+      font-size: 14px;
+    }
+  }
+
+  .slide-image-girl {
+    .girl-card {
+      width: 100% !important;
+      display: inline-block;
+      border-radius: 10px;
+      position: relative;
+      margin-right: 0;
+      padding: 0;
+
+      img {
+        width: 100%;
+        height: 240px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .girl-age {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        border: 1px solid var(--ion-color-gray-border);
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 4px 8px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-left: none;
+        font-size: 14px;
+        font-weight: 300;
+      }
+
+      .slide-info {
+        position: absolute;
+        left: 8px;
+        bottom: 16px;
+        font-size: 14px;
+      }
+
+      .slide-line {
+        position: absolute;
+        width: 100%;
+        bottom: 19px;
+
+        .dot {
+          width: 16px;
+          height: 2px;
+          display: inline-block;
+          margin: 0 2px;
+          background-color: var(--ion-color-gray-border);
+        }
+
+        .dot.active {
+          background-color: white;
+        }
+      }
+    }
+  }
+
+  ion-row {
+    background: var(--ion-color-dark4);
+    padding: 0;
+
+    .girl-bottom {
+      padding-left: 16px;
+      font-size: 25px;
+      color: white;
+      vertical-align: middle;
+      border-right: 1px solid var(--ion-color-gray-border);
+      cursor: pointer;
+
+      .dot-online {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        margin-right: 4px;
+        border-radius: 50%;
+        vertical-align: middle;
+        background-color: var(--ion-color-light-green);
+      }
+
+      .girl-city {
+        margin-left: 20px;
+        font-size: 20px;
+        color: var(--ion-color-medium);
+      }
+    }
+
+    .girl-continent {
+      margin-top: 15px;
+      font-size: 20px;
+      color: var(--ion-color-medium);
+      text-transform: capitalize;
+    }
+  }
+
+  .about-me {
+    background: none;
+    color: var(--ion-color-medium);
+  }
+
+  .aviability {
+    background: none !important;
+    color: var(--ion-color-medium);
+    font-size: 16px;
+
+    .contact-text {
+      text-align: left;
+      --color: #13b0f7;
+      font-size: 16px;
+      --background: transparent;
+      --background-activated: transparent;
+      --background-focused: transparent;
+
+      ion-icon {
+        margin-left: 8px;
+        font-size: 16px;
+      }
+    }
+
+    ion-row {
+      background: none !important;
+      letter-spacing: 1px;
+      border-bottom: .75px solid var(--ion-color-dark4);
+      padding: 8px 0px;
+
+      ion-col {
+        padding: 5px 0;
+        color: var(--ion-color-medium);
+      }
+
+      span {
+        color: var(--ion-color-light);
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .fees {
+    background: none !important;
+    color: var(--ion-color-medium);
+    font-size: 16px;
+
+    ion-row {
+      padding: 8px 0;
+      background: none !important;
+      letter-spacing: 2px;
+      border-bottom: .75px solid var(--ion-color-dark4);
+
+      ion-col {
+        padding: 5px 0;
+        color: var(--ion-color-medium);
+      }
+
+      ion-col[size="3"] {
+        color: var(--ion-color-light);
+      }
+    }
+  }
+
+  .location {
+    background: none !important;
+    color: var(--ion-color-medium);
+    font-size: 16px;
+
+    h4 {
+      font-size: 20px;
+      margin-bottom: 20px;
+
+      span {
+        color: var(--ion-color-light);
+      }
+    }
+
+    .map {
+      img {
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .show-phone-number {
+    ion-button {
+      --color: var(--ion-color-medium);
+      --border-color: var(--ion-color-medium);
+      --border-radius: 4px;
+    }
+  }
+}

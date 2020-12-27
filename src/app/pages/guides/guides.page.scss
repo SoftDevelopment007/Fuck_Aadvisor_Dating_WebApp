@@ -1,0 +1,41 @@
+ion-content {
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+.header-buttons {
+  margin-left: 5px;
+  margin-bottom: 8px;
+
+  button {
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--ion-color-secondary);
+    outline: unset !important;
+  }
+
+  .vscroll {
+    min-height: 54px;
+
+    .active {
+      color: var(--ion-color-light);
+      background: none;
+      border-bottom: 2px solid var(--ion-color-primary);
+      border-image: linear-gradient(to right, #3588fb 0%, #25bcfc 100%);
+      border-image-slice: 1;
+    }
+
+    button:not(.active) {
+      background-color: rgba(0, 0, 0, 0);
+      box-shadow: none;
+      border: 0px;
+      color: var(--ion-color-medium);
+    }
+
+    button {
+      margin: 4px 10px 4px 4px;
+      padding: 0 10px;
+    }
+  }
+}

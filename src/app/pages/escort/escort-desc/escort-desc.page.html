@@ -1,0 +1,45 @@
+<app-escort-header :href="tabs/escort/personal"></app-escort-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <div class="description">
+      <div class="each-card-content" [ngClass]="{'inactive-button': ds.writerService.status}">
+        <ion-label>DESCRIPTION <b>*</b></ion-label>
+        <ion-textarea *ngIf="ds.writerService.status" [(ngModel)]="ds.writerService.desc" [attr.rows]="5" disabled>
+        </ion-textarea>
+        <ion-textarea *ngIf="!ds.writerService.status" [(ngModel)]="ds.escort.desc" placeholder="Your price here"
+          [attr.rows]="5"></ion-textarea>
+      </div>
+    </div>
+
+    <ion-text class="ion-text-center ion-margin ion-display-block">OR</ion-text>
+    <div class="ion-text-center get-from-photo">
+      <ion-row>
+        <ion-col size="8" class="pro-left">
+          <ion-checkbox [(ngModel)]="ds.writerService.status" (ionChange)="addWriterService()"></ion-checkbox>
+          <span>Writers Service</span>
+        </ion-col>
+        <ion-col *ngIf="proWriter" size="4" class="pro-price">
+          <p>
+            <a>${{proWriter.cost}}</a>
+            <a>{{proWriter.price == 0 ? 'Free' : '$'+proWriter.price}}</a>
+          </p>
+          <span>Limited time only</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="more-views">
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+      </ion-row>
+      <span class="view-sample" (click)="openViewSample()">View Sample</span>
+    </div>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" (click)="goService()"
+    [class.fieldDisabled]="!ds.escort.desc && !ds.writerService.status">
+    Next
+  </ion-button>
+
+  <div class="escort-step">Step 1 of 4 Escort Details</div>
+</ion-content>

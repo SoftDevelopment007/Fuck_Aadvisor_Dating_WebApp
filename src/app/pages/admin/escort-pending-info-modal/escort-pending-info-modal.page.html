@@ -1,0 +1,197 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>#{{escort?.index}} Pending Information</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid *ngIf="escort">
+    <ion-row>
+      <ion-col>
+        <ion-label>Legal Name:</ion-label>
+        <ion-label input-label>{{escort.lname}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>Phone:</ion-label>
+        <ion-label input-label>{{escort.phone}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Display Name:</ion-label>
+        <ion-label input-label>{{escort.name}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>Age:</ion-label>
+        <ion-label input-label>{{escort.age}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Contact Name:</ion-label>
+        <ion-label input-label>{{escort.cash?.name}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>Contact Number:</ion-label>
+        <ion-label input-label>{{escort.cash?.phone}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Pro Photos:</ion-label>
+        <ion-label input-label max-56>{{escort.pro ? 'Yes' : 'No'}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Description:</ion-label>
+        <ion-label input-label class="escort-desc">{{escort.desc}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Address:</ion-label>
+        <ion-label input-label>{{escort.address}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label max-56>Area:</ion-label>
+        <ion-label input-label>{{escort.area}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label max-56>Ethnicity:</ion-label>
+        <ion-label input-label>{{escort.ethnic}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label max-56>Category:</ion-label>
+        <ion-label input-label>{{escort.category}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label max-56>Room:</ion-label>
+        <ion-label input-label>{{escort.rate?.room}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label max-56>Clean:</ion-label>
+        <ion-label input-label>{{escort.rate?.cleaning}}</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label max-56>GST:</ion-label>
+        <ion-label input-label>{{escort.rate?.gst == 1 ? 'Yes' : 'No'}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        <ion-label>Services:</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-grid class="ion-no-padding">
+          <ng-container *ngFor="let service of escort.services">
+            <ion-row *ngIf="service.name && service.price">
+              <ion-col>
+                <ion-label input-label max-w90>{{service.name}}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label input-label>${{service.price}}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+    <ion-row class="contact-row">
+      <ion-col>
+        <ion-label>Contact to confirm:</ion-label>
+        <ion-label input-label max-56>{{escort.contactStatus ? 'Yes' : 'No'}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <p class="list-title">Availability:</p>
+    <ion-row>
+      <ion-col>
+        <ion-grid class="ion-no-padding">
+          <ion-row *ngFor="let s of escort.schedules">
+            <ion-col size="1"></ion-col>
+            <ion-col size="3">
+              <ion-label>{{s.name}}</ion-label>
+            </ion-col>
+            <ion-col size="8">
+              <ion-label *ngIf="s.from" input-label>{{s.from}} to {{s.to}}</ion-label>
+              <ion-label *ngIf="!s.from" input-label>-</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+    <p class="list-title">Upgrades:</p>
+    <ion-row>
+      <ion-col>
+        <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="1"></ion-col>
+            <ion-col size="3">
+              <ion-label>Gold Listing</ion-label>
+            </ion-col>
+            <ion-col size="8">
+              <ion-label input-label>
+                <span *ngIf="upgrades.gold">{{upgrades.gold.months}} months</span>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="1"></ion-col>
+            <ion-col size="3">
+              <ion-label>Top of Site</ion-label>
+            </ion-col>
+            <ion-col size="8">
+              <ion-label input-label>
+                <span *ngIf="upgrades && upgrades.listing">{{upgrades.listing.months}} months</span>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="1"></ion-col>
+            <ion-col size="3">
+              <ion-label>Top of Area</ion-label>
+            </ion-col>
+            <ion-col size="8">
+              <ion-label input-label>
+                <span *ngIf="upgrades && upgrades.location">{{upgrades.location.months}} months</span>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="1"></ion-col>
+            <ion-col size="3">
+              <ion-label>Top of Ethnicity</ion-label>
+            </ion-col>
+            <ion-col size="8">
+              <ion-label input-label>
+                <span *ngIf="upgrades && upgrades.ethnicity">{{upgrades.ethnicity.months}} months</span>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ng-container *ngIf="upgrades && upgrades.category">
+            <ion-row *ngFor="let cat of upgrades.category;let i=index;">
+              <ion-col size="1"></ion-col>
+              <ion-col size="3">
+                <ion-label>Top of Category {{(i+1)}}</ion-label>
+              </ion-col>
+              <ion-col size="8">
+                <ion-label input-label>
+                  <span *ngIf="cat.months">{{cat.months}} months</span>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

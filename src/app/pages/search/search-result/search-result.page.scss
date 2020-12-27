@@ -1,0 +1,35 @@
+ion-toolbar {
+  ion-buttons {
+    height: 44px;
+  }
+
+  ion-searchbar.fuck-searchbar {
+    width: 100%;
+    --color: white;
+    border-color: white;
+  }
+}
+
+ion-content {
+  ion-segment-button {
+    height: 40px !important;
+    border-radius: 0 !important;
+    border: none !important;
+    padding: 0;
+    color: var(--ion-color-medium) !important;
+    --indicator-color: transparent !important;
+
+    img {
+      width: 26px;
+      height: 26px;
+      transform: translate(0, 20%);
+    }
+
+    &.segment-button-checked {
+      color: var(--ion-color-light) !important;
+      border-bottom: 2px solid !important;
+      border-image: linear-gradient(to right, #0066ff 13%, #66ccff 98%) !important;
+      border-image-slice: 1 !important;
+    }
+  }
+}

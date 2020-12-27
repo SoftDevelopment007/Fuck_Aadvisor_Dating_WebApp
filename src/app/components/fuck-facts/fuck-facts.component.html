@@ -1,0 +1,107 @@
+<div *ngIf="show" class="fuck-facts">
+  <ion-item lines="none" class="fuck-header">
+    <ion-label>
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      {{ country }} {{ 'Fuck Facts' | translate }}
+    </ion-label>
+    <ion-button slot="end" (click)="collapse = !collapse">
+      <ng-container *ngIf="collapse; else open;">
+        {{ 'Open' | translate }}
+      </ng-container>
+      <ng-template #open>
+        {{ 'Collapse' | translate }}
+      </ng-template>
+      <ion-icon [name]="collapse ? 'chevron-down' : 'chevron-up'"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <div class="fuck-body" [class.transition]="!collapse">
+    <ion-grid class="fuck-card">
+      <ion-row class="card-header">
+        <ion-col size="4">
+          <img src="assets/images/nz-flag.png" />
+        </ion-col>
+        <ion-col size="4">
+          <ion-label>{{ country }}</ion-label>
+        </ion-col>
+        <ion-col size="4">
+          <ion-label class="text-italic">Aotearia (Maori)</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2"></ion-col>
+        <ion-col size="8" class="ion-text-center">
+          <img src="assets/images/nz-map.png" />
+        </ion-col>
+        <ion-col size="2"></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <ion-label>Capital</ion-label>
+        </ion-col>
+        <ion-col size="7">
+          <ion-label>Wellington</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <ion-label>Population</ion-label>
+        </ion-col>
+        <ion-col size="7">
+          <ion-label>4.794 million</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <ion-label>Official Languages</ion-label>
+        </ion-col>
+        <ion-col size="7">
+          <ion-label>English, Maori, New Zeland Sign...</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="fuck-card">
+      <ion-row>
+        <ion-col size="5">
+          <ion-label>Legal Status</ion-label>
+          <p class="text-legal">LEGAL</p>
+        </ion-col>
+        <ion-col size="7">
+          <ion-label>
+            Prostitution in New Zealand, brothel -keeping, living off the proceeds of someone else's prostitution, and
+            street solicitation are legal in New Zealand and have been since the Prostitution Reform Act 2003 came into
+            effect.
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="fuck-card">
+      <ion-row>
+        <ion-col size="5">
+          <ion-label> {{ country }} Listings </ion-label>
+        </ion-col>
+        <ion-col size="7">
+          <ion-label>
+            {{ listings }}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <ion-label> Top Areas </ion-label>
+        </ion-col>
+        <ion-col size="7" class="top-area">
+          <ion-label *ngFor="let area of topAreas; let i = index">
+            {{ i + 1 }}. {{ area.name }} <a (click)="viewGirl(area.name)">View</a>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="ion-text-right">
+      <ion-icon name="close-circle-outline" class="close-btn" (click)="collapse = true"></ion-icon>
+    </div>
+  </div>
+</div>

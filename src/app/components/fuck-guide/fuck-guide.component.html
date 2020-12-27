@@ -1,0 +1,52 @@
+<ion-grid class="fuck-guide" [class.active]="guide.top">
+  <ion-row class="guide-header">
+    <ion-col size="2">
+      <img [src]="guide.image? guide.image: ds.default_image" />
+    </ion-col>
+    <ion-col size="10">
+      <p>{{ app.transText(guide, 'writer')}} <span *ngIf="guide.top">{{ 'Top Guide' | translate }} </span></p>
+      <ion-label>{{ app.transText(guide, 'title') }}</ion-label>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="guide-desc">
+    <ion-col size="2"></ion-col>
+    <ion-col size="10">
+      <ion-label>{{ app.transText(guide, 'desc') }}</ion-label>
+      <ion-label class="link-text">[Link]</ion-label>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="guide.escortInfo">
+    <ion-col size="1"></ion-col>
+    <ion-col size="11" (click)="openGirl()">
+      <div class="guide-escort">
+        <ion-row *ngIf="guide.escortInfo.image">
+          <ng-container *ngFor="let image of guide.escortInfo.image;let i=index;">
+            <ion-col *ngIf="i<6" size="4">
+              <img [src]="image" />
+            </ion-col>
+          </ng-container>
+        </ion-row>
+        <h4>{{guide.escortInfo.name}}</h4>
+        <p>{{guide.escortInfo.desc}}</p>
+        <ion-label>#Link&nbsp; {{deepLink}}{{guide.escort}}</ion-label>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="eye-views">
+    <ion-col size="8"></ion-col>
+    <ion-col size="2">
+      <ion-icon name="eye" class="eye-icon"></ion-icon>
+      <span>{{guide.views | views}}</span>
+    </ion-col>
+    <ion-col size="2">
+      <ion-icon [name]="saved ? 'star' : 'star-outline'" (click)="saveGuide()" class="star-icon"
+        [ngClass]="{'active': saved}"></ion-icon>
+      <span>{{savedGuideLength}}</span>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<div class="list-divider"></div>

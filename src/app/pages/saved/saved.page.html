@@ -1,0 +1,60 @@
+<app-fuck-header :type="girl" :route="saved"></app-fuck-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="mode" class="segment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="girls">
+      <ion-label>
+        <img src="/assets/icon/saved-girl-icon.png" />
+        {{'saved_girls' | translate}}
+      </ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="guides">
+      <ion-label>
+        <img src="/assets/icon/saved-guide-icon.png" />
+        {{'saved_guides' | translate}}
+      </ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="ds.config" [ngSwitch]="mode">
+    <ion-grid *ngSwitchDefault>
+      <ng-container *ngFor="let location of ds.config.countryList">
+        <ion-row *ngIf="savedGirls && savedGirls[location.name]" class="girls-list">
+          <ion-col class="section-title" size="12"> {{location.name}} </ion-col>
+          <ion-col *ngFor="let girl of savedGirls[location.name];let i=index" size="6">
+            <div class="girl-card" [ngClass]="{ 'top-girl': girl.gold }">
+              <div (click)="goGirlProfile(girl)">
+                <img [src]="girl.img" class="girl-image" />
+                <div class="girl-age">{{ girl.age }} years</div>
+                <ion-row class="girl-bottom">
+                  <ion-col class="top-icon"></ion-col>
+                  <ion-col class="dot-online" [ngClass]="{'offline': !girl.online}">
+                    <span>&nbsp;</span>
+                  </ion-col>
+                  <ion-col class="girl-info">
+                    <p>{{ app.transText(girl, 'name') }}</p>
+                    <span class="girl-city">{{ girl.suburbs }}</span>
+                  </ion-col>
+                </ion-row>
+              </div>
+              <ion-button (click)="removeSavedGirl(location.name, i)" class="star-btn active">
+                <ion-icon slot="icon-only" name="star"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </ion-grid>
+
+    <ion-grid *ngSwitchCase="'guides'">
+      <ng-container *ngFor="let location of ds.config.countryList">
+        <div *ngIf="savedGuides && savedGuides[location.name]">
+          <p class="section-title">{{location.name}}</p>
+          <ng-container *ngFor="let guide of savedGuides[location.name];let i=index;">
+            <app-fuck-guide [guide]="guide" remove="1"></app-fuck-guide>
+          </ng-container>
+        </div>
+      </ng-container>
+    </ion-grid>
+  </div>
+</ion-content>

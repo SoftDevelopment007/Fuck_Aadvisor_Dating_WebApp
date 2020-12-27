@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/escort/upgrade"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-card class="payment-method">
+      <ion-card-header>PAYMENT METHOD</ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-row>
+          <ion-col size="4" [class.active]="activePayment=='credit'" (click)="updatePayment('credit')">
+            <div class="ion-text-center each-method">
+              <ion-icon name="card"></ion-icon>
+            </div>
+            <p class="ion-text-center">Credit Card</p>
+          </ion-col>
+          <ion-col size="4" [ngClass]="{'active': activePayment=='paypal'}" (click)="updatePayment('paypal')">
+            <div class="ion-text-center each-method">
+              <ion-icon name="card"></ion-icon>
+            </div>
+            <p class="ion-text-center">PayPal</p>
+          </ion-col>
+          <ion-col size="4" [ngClass]="{'active': activePayment=='cash'}" (click)="updatePayment('cash')">
+            <div class="ion-text-center each-method">
+              <ion-icon name="cash"></ion-icon>
+            </div>
+            <p class="ion-text-center">Cash</p>
+          </ion-col>
+          <ion-col size="4" [ngClass]="{'active': activePayment=='bank'}" (click)="updatePayment('bank')">
+            <div class="ion-text-center each-method">
+              <ion-icon name="cash"></ion-icon>
+            </div>
+            <p class="ion-text-center">Bank transfer</p>
+          </ion-col>
+          <ion-col size="4" [ngClass]="{'active': activePayment=='wechat'}" (click)="updatePayment('wechat')">
+            <div class="ion-text-center each-method">
+              <ion-icon name="cash"></ion-icon>
+            </div>
+            <p class="ion-text-center">Wechat Pay</p>
+          </ion-col>
+          <ion-col size="4" [ngClass]="{'active': activePayment=='alipay'}" (click)="updatePayment('alipay')">
+            <div class="ion-text-center each-method">
+              <ion-icon name="cash"></ion-icon>
+            </div>
+            <p class="ion-text-center">Alipay</p>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+    <div *ngIf="activePayment != 'cash'" class="note">
+      <p><span>Note: </span>Coming Soon, We are still working on our online payment centre</p>
+    </div>
+
+    <ion-card *ngIf="activePayment == 'cash'" class="card-details">
+      <ion-card-content class="ion-no-padding">
+        <div class="card-number">
+          <ion-row>
+            <ion-col size="12" class="ion-text-left">
+              <ion-input type="text" [(ngModel)]="ds.escort.cash.name" placeholder="Enter your contact name">
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <span>Contact Name</span>
+        </div>
+        <div class="card-holder">
+          <ion-row>
+            <ion-col size="12" class="ion-text-left">
+              <ion-input type="tel" [(ngModel)]="ds.escort.cash.phone" [brmasker]="{mask:'000-000-0000', len:12}"
+                placeholder="Enter phone number">
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <span>Phone Number <b>*</b></span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" [class.fieldDisabled]="!ds.escort.cash.phone"
+    (click)="complete()">
+    Complete
+  </ion-button>
+
+  <div class="escort-step">Step 4 of 4 Payment</div>
+</ion-content>

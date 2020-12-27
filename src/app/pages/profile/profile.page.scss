@@ -1,0 +1,70 @@
+ion-buttons {
+  margin-top: 2px;
+
+  ion-button {
+    width: 50%;
+    height: 40px !important;
+    margin: 0;
+    padding: 0;
+    color: var(--ion-color-medium) !important;
+    border-radius: 0 !important;
+    border: none !important;
+
+    &.active {
+      color: var(--ion-color-light) !important;
+      border: 2px solid !important;
+      border-image: linear-gradient(to right, #0066ff 13%, #66ccff 98%) !important;
+      border-image-slice: 1 !important;
+    }
+  }
+}
+
+ion-list {
+  background: transparent !important;
+
+  ion-item {
+    --color: white;
+    --background: transparent;
+  }
+
+  .avatar {
+    margin-top: 32px;
+
+    ion-avatar {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 15px auto 0;
+    }
+
+    ion-icon {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 0;
+      right: 0;
+      padding: 4px;
+      color: white;
+      border-radius: 50%;
+      background: linear-gradient(to right, #0066ff 13%, #66ccff 98%);
+      cursor: pointer;
+    }
+  }
+
+  .profile-name {
+    ion-label {
+      width: 100%;
+      max-width: 100%;
+      color: white;
+
+      a {
+        font-size: 11px;
+        text-decoration: underline;
+      }
+    }
+
+    ion-input {
+      color: white;
+    }
+  }
+}

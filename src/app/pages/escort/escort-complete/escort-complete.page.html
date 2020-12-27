@@ -1,0 +1,91 @@
+<ion-content>
+  <div class="great-section">
+    <h4>Great!</h4>
+    <span> Your listing is being reviewed you can </span>
+    <a routerLink="/tabs/escort/photo" routerDirection="forward">edit your details here</a>
+    <ion-button expand="full" shape="round" class="manager-btn" routerLink="/tabs/manage" routerDirection="forward">
+      Go To Escort Manager
+    </ion-button>
+  </div>
+
+  <ion-grid *ngIf="ds.escort">
+    <ion-slides class="slide-image-girl">
+      <ion-slide *ngFor="let image of ds.escort.image; let i=index">
+        <div class="girl-card">
+          <img [src]="image" />
+          <div class="girl-age">{{ds.escort.age}} years</div>
+          <div class="slide-info">
+            {{(i+1)}}/{{ds.escort.image.length}}
+          </div>
+          <div class="slide-line">
+            <div *ngFor="let dot of ds.escort.image; let k=index" class="dot" [ngClass]="{'active': k<= i}"></div>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-row>
+      <ion-col size="8">
+        <div class="girl-bottom">
+          <span class="dot-online">&nbsp;</span> {{ds.escort.name}}
+          <div class="girl-city">{{ds.escort.location}}</div>
+        </div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="girl-continent">{{ds.escort.ethnic}}</div>
+      </ion-col>
+    </ion-row>
+
+    <ion-card class="about-me">
+      <ion-card-header>ABOUT ME</ion-card-header>
+      <ion-card-content>{{ds.escort.desc}}</ion-card-content>
+    </ion-card>
+
+    <ion-card class="aviability">
+      <ion-card-header>AVIABILITY</ion-card-header>
+      <button *ngIf="ds.escort.contactStatus" class="contact-text">
+        Contact to confirm
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+      </button>
+      <ion-grid *ngIf="!ds.escort.contactStatus">
+        <div *ngFor="let schedule of ds.escort.schedules">
+          <ion-row *ngIf="schedule.from">
+            <ion-col size="5">{{schedule.name}}</ion-col>
+            <ion-col size="7" class="ion-text-right">
+              <span>{{schedule.from}}</span> - <span>{{schedule.to}}</span>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="fees">
+      <ion-card-header>FEES</ion-card-header>
+      <ion-grid>
+        <div *ngFor="let service of ds.escort.services">
+          <ion-row *ngIf="service.name">
+            <ion-col size="9">{{service.name}}</ion-col>
+            <ion-col size="3" class="ion-text-right">${{service.price1}}</ion-col>
+          </ion-row>
+        </div>
+      </ion-grid>
+    </ion-card>
+
+    <ion-card class="location">
+      <ion-card-header>LOCATION</ion-card-header>
+      <ion-card-content>
+        <h4>{{ds.escort.location}}</h4>
+        <div class="map">
+          <img src="assets/images/map.png">
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="ion-padding show-phone-number">
+      <ion-button expand="full" fill="outline" shape="round" (click)="togglePhone()">
+        {{showPhone ? ds.escort.phone : 'Show Phone Number'}}
+      </ion-button>
+    </div>
+  </ion-grid>
+
+</ion-content>

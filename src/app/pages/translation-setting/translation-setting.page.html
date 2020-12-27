@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/contact/chats"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Translation Setting </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list lines="none">
+    <ion-item class="translate">
+      <ion-label>TRANSLATE MESSAGES TO</ion-label>
+      <ion-select [(ngModel)]="target_lan">
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="ja">Japanese</ion-select-option>
+        <ion-select-option value="es">Spanish</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Translation Default</ion-label>
+      <ion-toggle [checked]="true" class="toggle-small"></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

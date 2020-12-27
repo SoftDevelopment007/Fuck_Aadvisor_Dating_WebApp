@@ -1,0 +1,22 @@
+ion-content {
+  --background: transparent;
+
+  .cart-body {
+    background-color: #c4c4c4;
+    border-radius: 8px;
+
+    p {
+      color: #000000;
+
+      a {
+        float: right;
+        color: #000000;
+      }
+    }
+
+    hr {
+      height: 1px;
+      background-color: #000000;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+ion-grid {
+  ion-buttons ion-button {
+    font-weight: bold;
+  }
+
+  ion-col {
+    display: flex;
+    color: white;
+    align-items: center;
+
+    ion-label {
+      min-width: 100px;
+      flex: unset;
+      vertical-align: middle;
+    }
+
+    ion-input,
+    ion-textarea {
+      flex: 100%;
+      --padding-start: 4px;
+      vertical-align: middle;
+      border: 1px solid #fff;
+    }
+  }
+}
+
+.guide-image {
+  cursor: pointer;
+
+  .upload-btn {
+    margin-left: 32px;
+  }
+
+  img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+ion-footer {
+  ion-buttons {
+    padding: 8px;
+    background: var(--ion-color-toolbar-bg);
+  }
+}

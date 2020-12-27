@@ -1,0 +1,28 @@
+ion-col {
+  display: flex;
+  color: white;
+  align-items: center;
+
+  ion-label {
+    margin: 4px 8px 4px 0;
+  }
+
+  ion-label:first-child {
+    max-width: 110px;
+  }
+
+  .escort-desc {
+    min-height: 65px;
+  }
+}
+
+.contact-row {
+  ion-label:first-child {
+    max-width: 120px;
+  }
+}
+
+.list-title {
+  margin-bottom: 0;
+  font-size: 18px;
+}

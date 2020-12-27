@@ -1,0 +1,22 @@
+.notification-body {
+  display: flex;
+  padding: 16px 32px;
+
+  ion-textarea {
+    max-width: 450px;
+    font-size: 20px;
+    border: 1px solid #000000;
+    color: #000000;
+  }
+
+  .button-group {
+    margin-left: 10%;
+
+    p {
+      font-size: 20px;
+      color: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

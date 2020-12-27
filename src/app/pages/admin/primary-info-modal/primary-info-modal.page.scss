@@ -1,0 +1,29 @@
+ion-grid {
+  ion-buttons ion-button {
+    font-weight: bold;
+  }
+
+  ion-col {
+    display: flex;
+    color: white;
+
+    ion-label {
+      min-width: 100px;
+      vertical-align: middle;
+    }
+
+    ion-input,
+    ion-textarea {
+      flex: 100%;
+      vertical-align: middle;
+      border: 1px solid #fff;
+    }
+  }
+}
+
+ion-footer {
+  ion-buttons {
+    padding: 8px;
+    background: var(--ion-color-toolbar-bg);
+  }
+}

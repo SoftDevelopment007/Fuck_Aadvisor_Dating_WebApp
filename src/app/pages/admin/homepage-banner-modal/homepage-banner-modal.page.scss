@@ -1,0 +1,43 @@
+.girl-card {
+  margin-right: 0;
+
+  img {
+    object-fit: cover;
+    object-position: top;
+  }
+
+  ion-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+.main-slide {
+  .girl-card img {
+    object-position: center;
+    height: 300px;
+  }
+}
+
+.thumb-slide {
+  .girl-card {
+    max-height: 150px;
+    padding: 4px;
+
+    img {
+      width: 100%;
+      min-height: 70px;
+      border-radius: 4px;
+    }
+
+    &.active {
+      border: 1px solid #ddd;
+    }
+  }
+}
+
+.upload-section {
+  margin: 8px auto;
+  cursor: pointer;
+}

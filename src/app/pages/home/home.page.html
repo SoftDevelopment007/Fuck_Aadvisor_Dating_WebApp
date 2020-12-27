@@ -1,0 +1,71 @@
+<app-fuck-header :label="Be An Escort" :type="girl" (post)="openBecomeEscort($event)"></app-fuck-header>
+
+<ion-content scrollY="false">
+  <ion-grid *ngIf="!searchStatus" class="country-section">
+    <ion-row class="ion-padding-top">
+      <ion-col size="6" class="ion-no-padding current-country">
+        <img src="assets/icon/gps-icon.png" />
+        <ion-button expand="full" shape="round" [color]="ds.userCountry.color || 'primary'">
+          <ion-label class="ion-text-left">
+            <p>Current</p>
+            <h4>{{ ds.userCountry.name }}({{getCountEscorts(ds.userCountry.name)}})</h4>
+          </ion-label>
+        </ion-button>
+      </ion-col>
+      <ng-container *ngFor="let country of ds.config?.countryList">
+        <ion-col *ngIf="ds.userCountry.name != country.name" size="6">
+          <ion-button
+            (click)="selectCountry(country)"
+            expand="full"
+            shape="round"
+            [color]="ds.userCountry.color || 'primary'"
+            (mouseover)="mouseover($event)"
+          >
+            <ion-label>{{ country.name }}({{getCountEscorts(country.name)}})</ion-label>
+          </ion-button>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+
+  <section class="anima-wrapper anima-first" #firstBgHide>
+    <div class="btn btn-search">
+      <div class="outer-border" #btnBomb (click)="searchGirls()">
+        <div class="text-wrapper btn-main">
+          <span class="btn-text text-first" #searchFirstText>GIRLS<br />NEARBY</span>
+          <span class="btn-text text-second" #searching>Searching...</span>
+        </div>
+        <div class="inner-border border-gray" #borderGray></div>
+        <div class="inner-border border-blue" #borderBlue></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="anima-wrapper anima-second">
+    <div class="bg human-bg"></div>
+    <div class="bg map-bg" #mapbg></div>
+    <div class="radar-stick" #radarStick></div>
+    <div class="light-box" #lightBox>
+      <img class="find-arrow" #findArrow src="/assets/icon/nearby-arrow.png" alt="" />
+      <div class="text-wrapper">
+        <span class="text-first" #lightTextFirst>Searching Nearby</span>
+        <span class="text-second" #lightTextSecond>Getting Results...</span>
+        <span class="text-third" #lightTextThird>Displaying Results...</span>
+      </div>
+    </div>
+    <div class="dots-wrap">
+      <div class="dot dt-1" #dt1></div>
+      <div class="dot dt-2" #dt2></div>
+      <div class="dot dt-3" #dt3></div>
+      <div class="dot dt-4" #dt4></div>
+    </div>
+  </section>
+
+  <ng-container *ngIf="!searchStatus">
+    <ion-slides #bannerSlides pager="true" loop="true" [options]="bannerSlideOpts" class="home-bottom-bg">
+      <ion-slide *ngFor="let image of ds.config?.banners">
+        <img [src]="image" onerror="this.src='/assets/images/home-bottom-bg.png'" />
+      </ion-slide>
+    </ion-slides>
+  </ng-container>
+</ion-content>

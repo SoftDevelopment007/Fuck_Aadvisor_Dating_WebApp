@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="searchWord" class="fuck-searchbar" placeholder=""></ion-searchbar>
+    <ion-buttons slot="end">
+      <button (click)="goSearchResult(searchWord)" class="search-btn">Search</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid class="search-group">
+    <p>Recent Searches<a (click)="clearRecentSearches()" class="ion-text-underline ">Clear Recent Searches</a></p>
+    <ion-row>
+      <ion-col *ngFor="let rSearch of recentSearches">
+        <button (click)="goSearchResult(rSearch.name)">{{rSearch.name}}</button>
+      </ion-col>
+    </ion-row>
+    <p>Top Searches</p>
+    <ion-row>
+      <ion-col *ngFor="let tSearch of topSearches">
+        <button (click)="goSearchResult(tSearch.name)">{{tSearch.name}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,67 @@
+.availability {
+  background: none;
+  margin: 10px 0;
+  box-shadow: none;
+  width: 100%;
+
+  ion-card-header {
+    color: var(--ion-color-medium);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  ion-card-content {
+    .checkbox-agree {
+      ion-item {
+        color: var(--ion-color-medium);
+        font-size: 14px;
+        --background: transparent;
+      }
+    }
+  }
+}
+
+.time {
+  margin-bottom: 16px;
+  padding: 0;
+  background: none;
+
+  ion-row {
+    min-height: 41px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ion-color-gray-border) !important;
+    align-items: center;
+
+    ion-col {
+      padding: 0;
+      color: var(--ion-color-gray-border);
+      font-size: 14px;
+    }
+  }
+
+  ion-datetime {
+    position: relative;
+    width: 35%;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 10px;
+    color: var(--ion-color-medium);
+    border: .55px solid var(--ion-color-gray-border);
+    border-radius: 15px;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+  }
+
+  span.to {
+    position: absolute;
+    display: inline-block;
+    top: 6px;
+    right: 35%;
+    margin-right: 6px;
+    font-size: 12px;
+    color: var(--ion-color-gray-border);
+  }
+}

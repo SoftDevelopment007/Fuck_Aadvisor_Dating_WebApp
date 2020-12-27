@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'ME' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-buttons>
+    <ion-button [class.active]="mode == 'user'" (click)="changeMode('user')">
+      {{'Customer Mode' | translate}}
+    </ion-button>
+    <ion-button [class.active]="mode == 'escort'" (click)="changeMode('escort')">
+      {{'Escort Mode' | translate}}
+    </ion-button>
+  </ion-buttons>
+
+  <div *ngIf="profile">
+    <ion-list *ngIf="mode=='user'" lines="none">
+      <ion-item class="ion-no-padding avatar">
+        <ion-avatar (click)="changeAvatar()">
+          <img *ngIf="profile" src="{{profile.avatar_url}}" onerror="this.src='assets/images/default-avatar.png'" />
+          <ion-icon name="brush" round></ion-icon>
+          <input type="file" (change)="updateAvatar($event)" #fileInp style="display: none" />
+        </ion-avatar>
+      </ion-item>
+      <ion-item *ngIf="profile" class="ion-text-center profile-name">
+        <ion-label *ngIf="!edit">
+          {{profile.name}}
+          <a (click)="edit=true;">Edit</a>
+        </ion-label>
+        <ion-input *ngIf="edit" type="text" [(ngModel)]="profile.name" placeholder="Please type your name"></ion-input>
+      </ion-item>
+      <ion-item detail>
+        <ion-label (click)="openFeedback()">{{'Feedback' | translate}}</ion-label>
+      </ion-item>
+      <ion-item (click)="openChangeEmail()" detail>
+        <ion-label>{{'Change Email' | translate}}</ion-label>
+      </ion-item>
+      <ion-item detail>
+        <ion-label (click)="reset()">{{'Change Password' | translate}}</ion-label>
+      </ion-item>
+
+      <div class="ion-text-center ion-margin">
+        <a *ngIf="checkChange()" class="ion-text-underline" (click)="saveProfile()">
+          {{'Apply Changes' | translate}}
+        </a>
+      </div>
+    </ion-list>
+
+    <ion-list *ngIf="mode=='escort'" lines="none">
+      <ion-item class="ion-no-padding avatar">
+        <ion-avatar>
+          <img *ngIf="profile" src="{{profile.avatar_url}}" onerror="this.src='assets/images/default-avatar.png'" />
+        </ion-avatar>
+      </ion-item>
+      <ion-item *ngIf="profile" class="ion-text-center profile-name">
+        <ion-label> {{profile.name}} </ion-label>
+      </ion-item>
+      <ion-item detail>
+        <ion-label (click)="openFeedback()">{{'Feedback' | translate}}</ion-label>
+      </ion-item>
+      <ion-item (click)="openChangeEmail()" detail>
+        <ion-label>{{'Change Email' | translate}}</ion-label>
+      </ion-item>
+      <ion-item detail>
+        <ion-label (click)="reset()">{{'Change Password' | translate}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button fill="outline" expand="full" shape="round" color="medium" class="action-btn" (click)="signOut()">
+        {{'Log Out' | translate}}
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

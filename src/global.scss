@@ -1,0 +1,555 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import '~@ionic/angular/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+p {
+  font-size: 14px;
+}
+
+ion-searchbar.fuck-searchbar {
+  width: 80px;
+  height: 30px;
+  float: right;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+  padding-bottom: 0;
+  --color: var(--ion-color-gray);
+  font-size: 14px;
+  --background: transparent;
+  border: 1px solid var(--ion-color-gray-border);
+  border-radius: 30px !important;
+
+  .searchbar-input {
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    font-size: 14px;
+  }
+
+  .searchbar-search-icon {
+    width: 16px;
+  }
+}
+
+ion-toolbar {
+  --color: var(--ion-color-white);
+  --background: var(--ion-color-toolbar-bg);
+
+  ion-back-button {
+    --margin-start: 6px;
+    --color: white;
+    --icon-font-size: 24px;
+    --icon-margin-end: 0px;
+  }
+}
+
+ion-content {
+  --color: var(--ion-color-white);
+  --background: #191919;
+
+  ion-grid {
+    ion-row {
+      ion-col {
+        font-size: 14px;
+      }
+    }
+  }
+
+  ion-checkbox.fuck-checkbox {
+    width: 21px;
+    height: 21px;
+    margin-right: 8px;
+    --checkmark-width: 0;
+    --background: #242424;
+    --border-color: var(--ion-color-medium);
+    --border-color-checked: var(--ion-color-medium);
+  }
+
+  .ion-text-or {
+    text-align: center !important;
+  }
+}
+
+.vscroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-item {
+    flex: 0 0 auto;
+  }
+}
+
+.bottom-toast {
+  height: calc(100% - 64px);
+  --padding-bottom: 64px;
+}
+
+.error {
+  margin-top: 4px;
+  color: var(--ion-color-danger) !important;
+}
+
+.fuck-btn {
+  margin-right: 0;
+  margin-left: 0;
+  --background: rgba(56, 119, 255, 1);
+  --background: -moz-linear-gradient(
+    left,
+    rgba(56, 119, 255, 1) 0%,
+    rgba(56, 119, 255, 1) 27%,
+    rgba(0, 205, 255, 1) 100%
+  );
+  --background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(56, 119, 255, 1)),
+    color-stop(27%, rgba(56, 119, 255, 1)),
+    color-stop(100%, rgba(0, 205, 255, 1))
+  );
+  --background: -webkit-linear-gradient(
+    left,
+    rgba(56, 119, 255, 1) 0%,
+    rgba(56, 119, 255, 1) 27%,
+    rgba(0, 205, 255, 1) 100%
+  );
+  --background: -o-linear-gradient(
+    left,
+    rgba(56, 119, 255, 1) 0%,
+    rgba(56, 119, 255, 1) 27%,
+    rgba(0, 205, 255, 1) 100%
+  );
+  --background: -ms-linear-gradient(
+    left,
+    rgba(56, 119, 255, 1) 0%,
+    rgba(56, 119, 255, 1) 27%,
+    rgba(0, 205, 255, 1) 100%
+  );
+  --background: linear-gradient(
+    to right,
+    rgba(56, 119, 255, 1) 0%,
+    rgba(56, 119, 255, 1) 27%,
+    rgba(0, 205, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3877ff', endColorstr='#00cdff', GradientType=1);
+}
+
+.ion-text-underline {
+  text-decoration: underline;
+}
+
+.fuck-item {
+  --padding-start: 0;
+  --color: var(--ion-color-white);
+  --background: transparent;
+}
+
+.action-btn {
+  --border-radius: 4px;
+}
+
+.fuck-input {
+  position: relative;
+  margin-top: 16px;
+
+  ion-label {
+    display: inline-block !important;
+    position: absolute;
+    left: 16px;
+    top: -9px;
+    padding: 0 4px;
+    color: var(--ion-color-medium);
+    font-size: 12px;
+    background: var(--ion-color-dark3);
+    z-index: 99;
+  }
+
+  ion-input {
+    --padding-start: 16px;
+    border: 0.55px solid var(--ion-color-gray-border);
+    border-radius: 30px;
+  }
+}
+
+.field-required {
+  margin-left: 4px;
+  font-size: 16px;
+  color: red !important;
+  vertical-align: middle;
+}
+
+ion-input {
+  --placeholder-opacity: 0.3 !important;
+}
+
+.escort-step {
+  text-align: center;
+  padding: 16px;
+  color: #b4b4b4;
+}
+
+.fieldDisabled {
+  opacity: 0.6;
+}
+
+.ion-display-block {
+  display: block !important;
+}
+
+.text-btn {
+  --border-width: 0 !important;
+}
+
+.girl-card {
+  width: 100% !important;
+  display: inline-block;
+  margin-right: 20px;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 48vw;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .girl-image {
+    height: calc(50vw - 9px);
+  }
+
+  .girl-age {
+    position: absolute;
+    top: calc(50vw - 52px);
+    left: 0px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--ion-color-gray-border);
+    border-left: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .ad-here {
+    position: absolute;
+    top: 50px;
+    left: calc(50% - 40px);
+    color: white;
+  }
+
+  .girl-bottom {
+    .dot-online {
+      max-width: 15px;
+
+      span {
+        background-color: #51bb5f;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 10px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      &.offline span {
+        background-color: var(--ion-color-medium);
+      }
+    }
+
+    .girl-city {
+      color: var(--ion-color-medium);
+      font-size: 12px;
+    }
+
+    .top-icon {
+      max-width: 25px;
+    }
+
+    .girl-info {
+      max-width: calc(100% - 40px);
+
+      p {
+        margin: 0;
+        font-size: 16px;
+        line-height: 20px;
+        color: white;
+      }
+    }
+  }
+}
+
+.girl-card.top-girl {
+  .girl-image {
+    border: 4px solid #efc601;
+  }
+}
+
+ion-toolbar {
+  .cart-btn {
+    --background-color: transparent;
+
+    ion-icon {
+      font-size: 20px;
+    }
+
+    ion-badge {
+      position: absolute;
+      min-width: 18px;
+      top: 0px;
+      left: 14px;
+      padding: 4px;
+      font-size: 10px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.months-section {
+  text-align: center;
+  margin: 0;
+
+  ion-row {
+    height: 44px;
+
+    ion-col {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+      color: #ddd;
+      border: 1px solid #606060;
+
+      ion-icon {
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      p {
+        margin: 0 0 2px;
+        font-size: 20px;
+        color: #ddd;
+      }
+
+      span {
+        font-size: 11px;
+      }
+    }
+  }
+
+  .active-month {
+    ion-col {
+      color: #12a6ca;
+      border: 1px solid #00ceff;
+
+      p,
+      span {
+        color: #05befb;
+      }
+    }
+  }
+
+  .corner {
+    width: 0;
+    height: 0;
+    border-top: 22px solid #7d0c1c;
+    border-bottom: 22px solid transparent;
+    border-left: 22px solid transparent;
+    position: absolute;
+    right: 0;
+
+    span {
+      position: absolute;
+      top: -18px;
+      width: 90px;
+      left: -54px;
+      text-align: center;
+      font-size: 6px !important;
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      display: block;
+      color: white !important;
+    }
+  }
+}
+
+.star-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-top: 0;
+  --padding-start: 4px;
+  --padding-end: 4px;
+  font-size: 12px;
+  --background: transparent !important;
+  --background-activated-opacity: 0 !important;
+  --background-activated: transparent !important;
+  --background-focused-opacity: 0;
+  --background-hover-opacity: 0;
+
+  &.active ion-icon,
+  ion-icon[ng-reflect-name='star'] {
+    color: var(--ion-color-primary) !important;
+  }
+}
+
+.girls-list ion-col[size='6'] {
+  padding-inline-start: 2px;
+  padding-inline-end: 2px;
+}
+
+/** custom navigation **/
+.guide-pagination {
+  .ngx-pagination {
+    margin: 8px auto;
+    padding-left: 0;
+    text-align: center;
+
+    li {
+      font-size: 14px;
+      line-height: 21px;
+      background: #151515;
+      border: 1px solid gray;
+      border-radius: 4px;
+
+      a {
+        color: white;
+
+        &:hover {
+          background: #2e2e2e;
+          border-radius: 4px;
+          opacity: 1;
+        }
+      }
+
+      &.pagination-previous {
+        margin-right: 32px;
+        border-width: 0;
+      }
+
+      &.pagination-next {
+        margin-left: 32px;
+        border-width: 0;
+      }
+
+      &.current {
+        background: #2199e8;
+      }
+    }
+  }
+}
+
+.admin-content {
+  width: calc(100% - 270px);
+  top: 105px;
+  left: 270px;
+  --color: black;
+  --background: #fff;
+}
+
+[max-56] {
+  max-width: 56px !important;
+}
+
+[fa-text] {
+  color: #0000ff !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+[input-label] {
+  display: flex;
+  flex: 1;
+  min-height: 35px;
+  padding: 8px;
+  border: 1px solid #fff;
+}
+
+.reddot::before,
+.messageDot .back-btn::before {
+  content: ' ';
+  border-radius: 1em;
+  background-color: #ff5d5d;
+  height: 0.7em;
+  width: 0.75em;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  right: 0px;
+}
+
+/** custom modal **/
+.view-sample-modal {
+  width: 300px;
+  height: 350px;
+  top: 20%;
+  left: calc(50% - 150px);
+  --background: transparent;
+  --backdrop-opacity: 0 !important;
+}
+
+.cart-modal {
+  width: 280px;
+  top: 10px;
+  right: 8px;
+  left: unset;
+  opacity: 0.8;
+  --background: transparent;
+  --backdrop-opacity: 0 !important;
+}
+
+.security-warning-modal {
+  height: 300px;
+  top: 150px;
+  --background: transparent;
+}
+
+/** Upgrade popover modal **/
+.upgrade-popover {
+  .popover-content {
+    min-width: 320px;
+    right: 5.5% !important;
+    left: unset !important;
+    margin-top: -1.5%;
+    background: transparent;
+    border-radius: unset;
+  }
+
+  .popover-arrow::after {
+    display: none;
+  }
+}
+
+.suburbs-list-modal {
+  --background: 0;
+}

@@ -1,0 +1,326 @@
+<app-escort-header :href="tabs/escort/gold"></app-escort-header>
+
+<ion-content class="ion-padding">
+  <ion-grid *ngIf="ds.upgrades">
+    <ion-card>
+      <ion-row class="checkbox-agree">
+        <ion-col>
+          <ion-item lines="none">
+            <ion-checkbox [(ngModel)]="ds.upgrades.listing.status" slot="start" class="fuck-checkbox"
+              (click)="toggleType('listing')">
+            </ion-checkbox>
+            <ion-label>Top of Site</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col class="ion-text-right" *ngIf="upgrade && upgrade.listing && upgrade.listing.amount > 0">
+          <p>${{ upgrade.listing.price }} <span>per month</span></p>
+          <span class="green">{{ upgrade.listing.amount }} available</span>
+        </ion-col>
+        <ion-col class="ion-text-right" *ngIf="upgrade && upgrade.listing && upgrade.listing.amount < 1">
+          <p class="sold">SOLD</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="more-views">
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <span class="view-sample" (click)="viewSample('listing')">View Top of Site Sample</span>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.listing.index === 1 }">
+            <ion-col>
+              <ion-icon name="remove" (click)="changeListingMonth(-1)"></ion-icon>
+            </ion-col>
+            <ion-col (click)="changeListingMonth()">
+              <p>{{ ds.upgrades.listing.value }}</p>
+              <span>months</span>
+            </ion-col>
+            <ion-col>
+              <ion-icon name="add" (click)="changeListingMonth(1)"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.listing.index === 2 }">
+            <ion-col size="10" (click)="ds.upgrades.listing.index = 2; ds.upgrades.listing.months = 12">
+              <p>12</p>
+              <span>months</span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="4" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.listing.index === 3 }">
+            <ion-col size="10" (click)="ds.upgrades.listing.index = 3; ds.upgrades.listing.months = 24">
+              <p>24</p>
+              <span>months</span>
+              <div class="corner"><span>20% Off</span></div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card>
+      <ion-row class="checkbox-agree">
+        <ion-col size="5">
+          <ion-item lines="none">
+            <ion-checkbox [(ngModel)]="ds.upgrades.location.status" slot="start" class="fuck-checkbox"
+              (click)="toggleType('location')">
+            </ion-checkbox>
+            <ion-label>Top of Area</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+          <p>Mt Eden</p>
+          <a>try another</a>
+        </ion-col>
+        <ion-col class="ion-text-right" *ngIf="upgrade && upgrade.location && upgrade.location.amount > 0">
+          <p>${{ upgrade.location.price }} <span>per month</span></p>
+          <span class="green">{{ upgrade.location.amount }} available</span>
+        </ion-col>
+        <ion-col class="ion-text-right" *ngIf="upgrade && upgrade.location && upgrade.location.amount < 1">
+          <p class="sold">SOLD</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="more-views">
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <span class="view-sample" (click)="viewSample('location')">View Top of Area Sample</span>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.location.index === 1 }">
+            <ion-col>
+              <ion-icon name="remove" (click)="changeLocationMonth(-1)"></ion-icon>
+            </ion-col>
+            <ion-col (click)="changeLocationMonth()">
+              <p>{{ ds.upgrades.location.value }}</p>
+              <span>months</span>
+            </ion-col>
+            <ion-col>
+              <ion-icon name="add" (click)="changeLocationMonth(1)"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.location.index === 2 }">
+            <ion-col size="10" (click)="ds.upgrades.location.index = 2; ds.upgrades.location.months = 12">
+              <p>12</p>
+              <span>months</span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="4" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.location.index === 3 }">
+            <ion-col size="10" (click)="ds.upgrades.location.index = 3; ds.upgrades.location.months = 24">
+              <p>24</p>
+              <span>months</span>
+              <div class="corner"><span>20% Off</span></div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card>
+      <ion-row class="checkbox-agree">
+        <ion-col size="5">
+          <ion-item lines="none">
+            <ion-checkbox [(ngModel)]="ds.upgrades.ethnicity.status" slot="start" class="fuck-checkbox"
+              (click)="toggleType('ethnicity')">
+            </ion-checkbox>
+            <ion-label>Top of Ethnicity</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+          <p>Yang</p>
+          <a>change</a>
+        </ion-col>
+        <ion-col class="ion-text-right" *ngIf="upgrade && upgrade.ethnicity && upgrade.ethnicity.amount > 0">
+          <p>${{ upgrade.ethnicity.price }} <span>per month</span></p>
+          <span class="green">{{ upgrade.ethnicity.amount }} available</span>
+        </ion-col>
+        <ion-col class="ion-text-right" *ngIf="upgrade && upgrade.ethnicity && upgrade.ethnicity.amount < 1">
+          <p class="sold">SOLD</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="more-views">
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <span class="view-sample" (click)="viewSample('ethnicity')">View Top of Ethnicity Sample</span>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.ethnicity.index === 1 }">
+            <ion-col>
+              <ion-icon name="remove" (click)="changeEthnicityMonth(-1)"></ion-icon>
+            </ion-col>
+            <ion-col (click)="changeEthnicityMonth()">
+              <p>{{ ds.upgrades.ethnicity.value }}</p>
+              <span>months</span>
+            </ion-col>
+            <ion-col>
+              <ion-icon name="add" (click)="changeEthnicityMonth(1)"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.ethnicity.index === 2 }">
+            <ion-col size="10" (click)="ds.upgrades.ethnicity.index = 2; ds.upgrades.ethnicity.months = 12">
+              <p>12</p>
+              <span>months</span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': ds.upgrades.ethnicity.index === 3 }">
+            <ion-col size="10" (click)="ds.upgrades.ethnicity.index = 3; ds.upgrades.ethnicity.months = 24">
+              <p>24</p>
+              <span>months</span>
+              <div class="corner"><span>40% Off</span></div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card *ngFor="let cat of ds.upgrades.category; let i = index">
+      <ion-row class="checkbox-agree">
+        <ion-col size="5">
+          <ion-item lines="none">
+            <ion-label>Top of Category</ion-label>
+            <ion-checkbox [(ngModel)]="cat.status" slot="start" class="fuck-checkbox" (click)="toggleCategory(i)">
+            </ion-checkbox>
+          </ion-item>
+        </ion-col>
+        <ion-col size="3" class="ion-text-center">
+          <p>Yang</p>
+          <a>change</a>
+        </ion-col>
+        <ion-col class="ion-text-right" *ngIf="upgrade && upgrade.category && upgrade.category.amount > 0">
+          <p>${{ upgrade.category.price }} <span>per month</span></p>
+          <span class="green">{{ upgrade.category.amount }} available</span>
+        </ion-col>
+        <ion-col class="ion-text-right" *ngIf="upgrade && upgrade.category && upgrade.category.amount < 1">
+          <p class="sold">SOLD</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="more-views">
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <span class="view-sample" (click)="viewSample('category', i)">View Top of Category Sample</span>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': cat.index === 1 }">
+            <ion-col>
+              <ion-icon name="remove" (click)="changeCategoryMonth(i, -1)"></ion-icon>
+            </ion-col>
+            <ion-col (click)="changeCategoryMonth(i)">
+              <p>{{ cat.value }}</p>
+              <span>months</span>
+            </ion-col>
+            <ion-col>
+              <ion-icon name="add" (click)="changeCategoryMonth(i, 1)"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': cat.index === 2 }">
+            <ion-col size="10" (click)="cat.index = 2; cat.months = 12">
+              <p>12</p>
+              <span>months</span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="3" class="months-section">
+          <ion-row [ngClass]="{ 'active-month': cat.index === 3 }">
+            <ion-col size="10" (click)="cat.index = 3; cat.months = 24">
+              <p>24</p>
+              <span>months</span>
+              <div class="corner"><span>20% Off</span></div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-button expand="full" shape="round" class="add-category" (click)="addCategory()">
+      <ion-icon name="add-circle"></ion-icon>
+      Add another<br />top of category
+    </ion-button>
+
+    <div class="upgrade">
+      <div class="ion-text-center">
+        <ion-icon [name]="totalCollapse ? 'chevron-up' : 'chevron-down'" (click)="changeTotalCollapse()"></ion-icon>
+      </div>
+      <ion-grid *ngIf="ds.upgrades && upgrade" class="upgrade-list">
+        <div *ngIf="totalCollapse">
+          <ion-row>
+            <ion-col>
+              <h6>Upgrades:</h6>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="ds.upgrades.listing.status">
+            <ion-col size="7">
+              <p>- Top of Site</p>
+            </ion-col>
+            <ion-col size="5">
+              <p class="ion-text-right">${{ ds.upgrades.listing.months * upgrade.listing.price }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="ds.upgrades.location.status">
+            <ion-col size="7">
+              <p>- Top of Area</p>
+            </ion-col>
+            <ion-col size="5">
+              <p class="ion-text-right">${{ ds.upgrades.location.months * upgrade.ethnicity.price }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="ds.upgrades.ethnicity.status">
+            <ion-col size="7">
+              <p>- Top of Ethnicity</p>
+            </ion-col>
+            <ion-col size="5">
+              <p class="ion-text-right">${{ ds.upgrades.ethnicity.months * upgrade.ethnicity.price }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let cat of ds.upgrades.category">
+            <ion-col *ngIf="cat.status" size="7">
+              <p>- Top of Category</p>
+            </ion-col>
+            <ion-col *ngIf="cat.status" size="5">
+              <p class="ion-text-right">${{ cat.months * upgrade.category.price }}</p>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row class="total">
+          <ion-col size="7">
+            <h3>Total :</h3>
+          </ion-col>
+          <ion-col size="5">
+            <h3 class="ion-text-right">${{ totalPrice() }}</h3>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" routerLink="/tabs/escort/payment" routerDirection="forward">
+    Start
+  </ion-button>
+
+  <div class="escort-step">Step 3 of 4 Upgrades</div>
+</ion-content>

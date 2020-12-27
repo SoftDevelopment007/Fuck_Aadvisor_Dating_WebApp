@@ -1,0 +1,19 @@
+ion-grid {
+  max-width: 520px;
+  margin-left: 100px;
+  margin-top: 60px;
+
+  .doc-title {
+    margin-bottom: 0;
+    padding-left: 4px;
+    font-size: 20px;
+    color: #000000;
+  }
+
+  ion-col {
+    font-size: 20px;
+    color: #0000ff;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

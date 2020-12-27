@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>#{{escort?.index}} Primary Information</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+  <ion-grid>
+    <ion-buttons>
+      <ng-container *ngFor="let lang of ds.languages">
+        <ion-button fill="outline" class="text-btn" [color]="eLang==lang.code ? 'light' : 'primary'"
+          (click)="eLang=lang.code">
+          {{ lang.short_name }}
+        </ion-button>
+      </ng-container>
+    </ion-buttons>
+    <ion-row>
+      <ion-col>
+        <ion-label>Legal Name:</ion-label>
+        <ng-container *ngIf="eLang=='en'; else legalname">
+          <ion-input type="text" [(ngModel)]="oldData.lname"></ion-input>
+        </ng-container>
+        <ng-template #legalname>
+          <ion-input type="text" [(ngModel)]="oldData[eLang]['lname']"></ion-input>
+        </ng-template>
+      </ion-col>
+      <ion-col>
+        <ion-label>Phone:</ion-label>
+        <ion-input type="tel" [(ngModel)]="oldData.phone" [brmasker]="{ mask: '000-000-0000', len: 12 }"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Display Name:</ion-label>
+        <ng-container *ngIf="eLang=='en'; else name">
+          <ion-input type="text" [(ngModel)]="oldData.name"></ion-input>
+        </ng-container>
+        <ng-template #name>
+          <ion-input type="text" [(ngModel)]="oldData[eLang]['name']"></ion-input>
+        </ng-template>
+      </ion-col>
+      <ion-col>
+        <ion-label>Age:</ion-label>
+        <ion-input type="number" [(ngModel)]="oldData.age" min="18" max="99"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Contact Name:</ion-label>
+        <ng-container *ngIf="eLang=='en'; else cashname">
+          <ion-input type="text" [(ngModel)]="cash.name"></ion-input>
+        </ng-container>
+        <ng-template #cashname>
+          <ion-input type="text" [(ngModel)]="oldData[eLang]['cashname']"></ion-input>
+        </ng-template>
+      </ion-col>
+      <ion-col>
+        <ion-label>Contact Number:</ion-label>
+        <ion-input type="tel" [(ngModel)]="cash.phone" [brmasker]="{mask:'000-000-0000', len:12}"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label>Description</ion-label>
+        <ng-container *ngIf="eLang=='en'; else desc">
+          <ion-textarea [(ngModel)]="oldData.desc" [attr.rows]="5"></ion-textarea>
+        </ng-container>
+        <ng-template #desc>
+          <ion-textarea [(ngModel)]="oldData[eLang]['desc']" [attr.rows]="5"></ion-textarea>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-text-center ion-no-border">
+  <ion-buttons class="ion-justify-content-evenly">
+    <ion-button fill="outline" class="ion-text-underline text-btn" (click)="saveChanges()">Save Changes</ion-button>
+    <ion-button fill="outline" class="ion-text-underline text-btn" (click)="revertChanges()">Revert</ion-button>
+  </ion-buttons>
+</ion-footer>

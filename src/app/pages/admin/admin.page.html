@@ -1,0 +1,33 @@
+<ion-content>
+  <form class="ion-padding" [formGroup]="adminForm" (ngSubmit)="login(adminForm.value)">
+    <ion-item class="fuck-item">
+      <ion-label position="floating" color="light">Email</ion-label>
+      <ion-input type="text" formControlName="email" autocomplete="doNotAutoComplete"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error"
+          *ngIf="adminForm.get('email').hasError(validation.type) && (adminForm.get('email').dirty || adminForm.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item class="fuck-item">
+      <ion-label position="floating" color="light">Password</ion-label>
+      <ion-input type="password" formControlName="password" autocomplete="doNotAutoComplete" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error"
+          *ngIf="adminForm.get('password').hasError(validation.type) && (adminForm.get('password').dirty || adminForm.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-button expand="full" class="fuck-btn" type="submit" [disabled]="!adminForm.valid">
+      Sign In
+    </ion-button>
+  </form>
+</ion-content>

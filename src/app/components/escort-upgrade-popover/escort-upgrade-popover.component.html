@@ -1,0 +1,127 @@
+<ion-content>
+  <div class="upgrade-content">
+    <ion-segment [(ngModel)]="selectedUpgrade">
+      <ion-segment-button value="gold" [class.selected]="escort.gold">
+        Gold
+      </ion-segment-button>
+      <ion-segment-button value="site" [class.selected]="getSelectStatus('topSite')">
+        Top of Site
+      </ion-segment-button>
+      <ion-segment-button value="ethnicity" [class.selected]="getSelectStatus('ethnic')">
+        Top of Ethnicity
+      </ion-segment-button>
+      <ion-segment-button value="area" [class.selected]="getSelectStatus('area')">
+        Top of Area
+      </ion-segment-button>
+      <ion-segment-button value="category" [class.selected]="categories.length>0">
+        Top of Category
+      </ion-segment-button>
+      <ion-segment-button value="category1">
+        + Top of Category
+      </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="selectedUpgrade" class="upgrade-detail">
+      <ion-list *ngSwitchCase="'gold'" class="ion-no-margin">
+        <ion-button fill="outline" size="small" class="text-btn" [color]="escort.gold ? 'primary' : 'light'"
+          (click)="selectGold(1)">
+          ∙ Applied
+        </ion-button>
+        <ion-button fill="outline" size="small" class="text-btn" color="light" (click)="selectGold(0)">
+          None
+        </ion-button>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'site'" class="ion-no-margin">
+        <ion-button *ngIf="topSite" fill="outline" size="small" class="text-btn"
+          [class.selected]="topSite.escortIndex==escort.index" (click)="close()">
+          Taken: #{{topSite.escortIndex}}
+        </ion-button>
+        <ion-button *ngIf="!topSite" fill="outline" size="small" class="text-btn" (click)="selectTopSite(1)">
+          Apply
+        </ion-button>
+        <ion-button fill="outline" size="small" class="text-btn" color="light" (click)="selectTopSite(0)">
+          None
+        </ion-button>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'ethnicity'" class="ion-no-margin">
+        <ion-button fill="outline" size="small" class="text-btn">
+          <strong>{{escort.ethnic}}</strong>
+        </ion-button>
+        <ion-button *ngIf="ethnicities.length>0" fill="outline" size="small" class="text-btn" (click)="close()"
+          [class.selected]="ethnicities[0]['escortIndex']==escort.index">
+          1. Taken: #{{ethnicities[0]['escortIndex']}}
+        </ion-button>
+        <ion-button *ngIf="ethnicities.length<1" fill="outline" size="small" class="text-btn"
+          (click)="selectTopEthnic(1)">
+          1. Apply
+        </ion-button>
+        <ion-button *ngIf="ethnicities.length>1" fill="outline" size="small" class="text-btn" (click)="close()"
+          [class.selected]="ethnicities[1]['escortIndex']==escort.index">
+          2. Taken: #{{ethnicities[1]['escortIndex']}}
+        </ion-button>
+        <ion-button *ngIf="ethnicities.length<2" fill="outline" size="small" class="text-btn"
+          (click)="selectTopEthnic(1)">
+          2. Apply
+        </ion-button>
+        <ion-button fill="outline" size="small" class="text-btn" color="light" (click)="selectTopEthnic(0)">
+          None
+        </ion-button>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'area'" class="ion-no-margin">
+        <ion-button fill="outline" size="small" class="text-btn">
+          <strong>{{escort.area}}</strong>
+        </ion-button>
+        <ion-button *ngIf="areas.length>0" fill="outline" size="small" class="text-btn" (click)="close()"
+          [class.selected]="areas[0]['escortIndex']==escort.index">
+          1. Taken: #{{areas[0]['escortIndex']}}
+        </ion-button>
+        <ion-button *ngIf="areas.length<1" fill="outline" size="small" class="text-btn" (click)="selectTopArea(1)">
+          1. Apply
+        </ion-button>
+        <ion-button *ngIf="areas.length>1" fill="outline" size="small" class="text-btn" (click)="close()"
+          [class.selected]="areas[1]['escortIndex']==escort.index">
+          2. Taken: #{{areas[1]['escortIndex']}}
+        </ion-button>
+        <ion-button *ngIf="areas.length<2" fill="outline" size="small" class="text-btn" (click)="selectTopArea(1)">
+          2. Apply
+        </ion-button>
+        <ion-button fill="outline" size="small" class="text-btn" color="light" (click)="selectTopArea(0)">
+          None
+        </ion-button>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'category'" class="ion-no-margin">
+        <ion-button *ngIf="categories.length>0" fill="outline" size="small" class="text-btn" (click)="close()"
+          class="selected">
+          1. {{categories[0]['category']}}
+        </ion-button>
+        <ion-button *ngIf="categories.length<1" fill="outline" size="small" class="text-btn" (click)="applyCategory(1)">
+          1. Apply
+        </ion-button>
+        <ion-button *ngIf="categories.length>1" fill="outline" size="small" class="text-btn" (click)="close()"
+          class="selected">
+          2. {{categories[1]['category']}}
+        </ion-button>
+        <ion-button *ngIf="categories.length<2" fill="outline" size="small" class="text-btn" (click)="applyCategory(1)">
+          2. Apply
+        </ion-button>
+        <ion-button fill="outline" size="small" class="text-btn" color="light" (click)="applyCategory(0)">
+          None
+        </ion-button>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'category1'" class="ion-no-margin category-list">
+        <ion-button *ngFor="let c of rCategories;let i=index" fill="outline" size="small" class="text-btn"
+          (click)="selectCategory(i)">
+          {{c}}
+        </ion-button>
+        <ion-button fill="outline" size="small" class="text-btn" color="light" (click)="close()">
+          None
+        </ion-button>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

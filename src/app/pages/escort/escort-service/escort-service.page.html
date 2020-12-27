@@ -1,0 +1,74 @@
+<app-escort-header :href="tabs/escort/desc"></app-escort-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-card class="summary">
+      <ion-card-header class="ion-no-padding">
+        SUMMARY
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <div class="ion-margin-bottom rates">
+          <ion-row>
+            <ion-col size="8" class="ion-align-self-center">
+              <ion-label>Room (per session) $40 max</ion-label>
+            </ion-col>
+            <ion-col size="4">
+              <ion-input [(ngModel)]="ds.escort.rate.room"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="8" class="ion-align-self-center">
+              <ion-label>Cleaning (per session) $35 max</ion-label>
+            </ion-col>
+            <ion-col size="4">
+              <ion-input [(ngModel)]="ds.escort.rate.cleaning"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="7">
+              <ion-label>Prices Includes GST (15%)?</ion-label>
+            </ion-col>
+            <ion-col size="5">
+              <ion-radio-group [(ngModel)]="ds.escort.rate.gst">
+                <ng-container *ngFor="let gst of gsts">
+                  <div [ngClass]="gst.class">
+                    <ion-radio [value]="gst.value"></ion-radio>
+                    <ion-label>{{gst.label}}</ion-label>
+                  </div>
+                </ng-container>
+              </ion-radio-group>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ng-container *ngFor="let escortService of ds.escort.services; let i = index">
+          <ion-row *ngIf="escortService.status">
+            <ion-col size="7">
+              <div class="add-service">
+                <ion-label>SERVICE<span *ngIf="i==0" class="field-required">*</span></ion-label>
+                <ion-select [(ngModel)]="escortService.name" cancelText="Nah" okText="Okay!" placeholder="Add service"
+                  (ngModelChange)="selectService(i)">
+                  <ion-select-option *ngFor="let service of services" [value]="service">
+                    {{ service }}
+                  </ion-select-option>
+                </ion-select>
+              </div>
+            </ion-col>
+            <ion-col size="5">
+              <div class="price each-card-content">
+                <ion-label>PRICE<span *ngIf="i==0" class="field-required">*</span></ion-label>
+                <input currencyMask type="tel" [(ngModel)]="escortService.price1" placeholder="Add Price" />
+              </div>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" (click)="goSchedule()"
+    [class.fieldDisabled]="!ds.escort.services[0]['name'] || !ds.escort.services[0]['price1']">
+    Next
+  </ion-button>
+
+  <div class="escort-step">Step 2 of 4 Escort Service</div>
+</ion-content>

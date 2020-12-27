@@ -1,0 +1,49 @@
+<app-fuck-header :label="Post a Guide" :type="guide" (post)="postGuide($event)" :route="guides"></app-fuck-header>
+
+<ion-content>
+  <div class="header-buttons">
+    <div class="vscroll" scrollY="true">
+      <button ion-button [class.active]="mode=='top'" (click)="mode='top'">{{'Top Guides' | translate}}</button>
+      <button ion-button [class.active]="mode=='local'" (click)="mode='local'">{{'Local' | translate}}</button>
+      <button ion-button [class.active]="mode=='regional'" (click)="mode='regional'">{{'Regional' | translate}}</button>
+      <button ion-button [class.active]="mode=='world'" (click)="mode='world'">{{'World' | translate}}</button>
+    </div>
+  </div>
+
+  <div *ngIf="mode=='top'">
+    <app-fuck-facts></app-fuck-facts>
+    <ng-container *ngFor="let guide of topGuides | paginate: { itemsPerPage: pn, currentPage: p[0] }">
+      <app-fuck-guide [guide]="guide" remove="0"></app-fuck-guide>
+    </ng-container>
+    <div class="guide-pagination">
+      <pagination-controls (pageChange)="pageChange($event, 0)" previousLabel="Prev" maxSize="4"></pagination-controls>
+    </div>
+  </div>
+
+  <div *ngIf="mode=='local'">
+    <ng-container *ngFor="let guide of localGuides | paginate: { itemsPerPage: pn, currentPage: p[1] }">
+      <app-fuck-guide [guide]="guide" remove="0"></app-fuck-guide>
+    </ng-container>
+    <div class="guide-pagination">
+      <pagination-controls (pageChange)="pageChange($event, 1)" previousLabel="Prev" maxSize="4"></pagination-controls>
+    </div>
+  </div>
+
+  <div *ngIf="mode=='regional'">
+    <ng-container *ngFor="let guide of regGuides | paginate: { itemsPerPage: pn, currentPage: p[2] }">
+      <app-fuck-guide [guide]="guide" remove="0"></app-fuck-guide>
+    </ng-container>
+    <div class="guide-pagination">
+      <pagination-controls (pageChange)="pageChange($event, 2)" previousLabel="Prev" maxSize="4"></pagination-controls>
+    </div>
+  </div>
+
+  <div *ngIf="mode=='world'">
+    <ng-container *ngFor="let guide of worldGuides | paginate: { itemsPerPage: pn, currentPage: p[3] }">
+      <app-fuck-guide [guide]="guide" remove="0"></app-fuck-guide>
+    </ng-container>
+    <div class="guide-pagination">
+      <pagination-controls (pageChange)="pageChange($event, 3)" previousLabel="Prev" maxSize="4"></pagination-controls>
+    </div>
+  </div>
+</ion-content>

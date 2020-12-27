@@ -1,0 +1,16 @@
+ion-content {
+  --background: white;
+
+  form {
+    max-width: 450px;
+    margin: 250px auto 0px;
+
+    .fuck-item {
+      --color: var(--ion-color-dark3);
+    }
+
+    .fuck-btn {
+      margin-top: 32px;
+    }
+  }
+}

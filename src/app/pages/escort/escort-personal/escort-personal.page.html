@@ -1,0 +1,77 @@
+<app-escort-header :href="tabs/escort/photo"></app-escort-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <div class="escort-name">
+      <ion-row>
+        <ion-col size="12" class="ion-text-left">
+          <ion-input type="text" [(ngModel)]="ds.escort.name" placeholder="Please enter name"></ion-input>
+        </ion-col>
+      </ion-row>
+      <span>ESCORT NAME <b>*</b></span>
+    </div>
+    <div class="age">
+      <ion-row>
+        <ion-col size="12" class="ion-text-left">
+          <ion-input type="number" [(ngModel)]="ds.escort.age" placeholder="Please enter age" min="18" max="99"
+            (ionChange)="onChangeAge($event)">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <span>AGE <b>*</b></span>
+    </div>
+
+    <div class="ethnicity">
+      <ion-label>ETHNICITY <b>*</b></ion-label>
+      <ion-select [(ngModel)]="ds.escort.ethnic" cancelText="Nah" okText="Okay!" placeholder="Select Ethnicity">
+        <ion-select-option *ngFor="let ethnicity of ethnicities" [value]="ethnicity">
+          {{ ethnicity }}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="category">
+      <ion-label>CATEGORY <b>*</b></ion-label>
+      <ion-select [(ngModel)]="ds.escort.category[0]" cancelText="Nah" okText="Okay!" placeholder="Select Category">
+        <ion-select-option *ngFor="let category of filterCategories" [value]="category">
+          {{ category }}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="ion-margin-start gps-location">
+      <p>Current GPS Location</p>
+      <ion-label>
+        <ion-icon name="pin"></ion-icon> {{ ds.escort.location }}
+      </ion-label>
+    </div>
+
+    <div class="location">
+      <ion-row>
+        <ion-col class="ion-text-left">
+          <ion-input type="text" #address placeholder="Select on Map" class="address"></ion-input>
+          <ion-icon name="pin" class="location-icon"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <span>Escort Address <b>*</b></span>
+    </div>
+
+    <div class="ion-text-center">
+      <ion-text color="medium">or</ion-text>
+    </div>
+    <div class="location">
+      <ion-row>
+        <ion-col class="ion-text-left">
+          <ion-input type="text" [(ngModel)]="ds.escort.address" #location placeholder="Choose location"></ion-input>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" (click)="goDesc()"
+    [class.fieldDisabled]="checkButtonStatus()">
+    Next
+  </ion-button>
+
+  <div class="escort-step">Step 1 of 4 Escort Details</div>
+</ion-content>

@@ -1,0 +1,10 @@
+<ion-content class="ion-padding ion-text-center">
+  <h3>Are you sure to {{guide.status=='active' ? 'disable' : 'active'}} "{{guide.title}}"?</h3>
+  <ion-buttons class="ion-justify-content-evenly">
+    <ion-button fill="outline" class="text-btn" (click)="close()">No</ion-button>
+    <ion-button fill="outline" class="text-btn" (click)="confirm()">Yes</ion-button>
+  </ion-buttons>
+  <ion-button fill="outline" class="text-btn" color="danger" (click)="delete()">
+    Permanently Delete
+  </ion-button>
+</ion-content>

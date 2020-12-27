@@ -1,0 +1,89 @@
+<ion-header *ngIf="ds.admin.status" class="admin-header">
+  <ion-toolbar>
+    <ion-title>
+      <h2>FA Admin</h2>
+      <p *ngIf="ds.admin.auth">
+        {{ ds.config.country }}
+        <button (click)="openAdminPage('admin-country')">(Change)</button>
+      </p>
+    </ion-title>
+    <ion-buttons *ngIf="ds.admin.auth" slot="end">
+      <button ion-button (click)="openAdminPage('admin-settings')">Admin Settins</button>
+      <button ion-button (click)="adminLogout()">LOGOUT</button>
+    </ion-buttons>
+    <div *ngIf="path=='admin-escorts'" class="escorts-bar">
+      <span>Name:</span><a (click)="sortName(true)">A-Z</a><a (click)="sortName()">Z-A</a> <span> Age:</span><a
+        (click)="sortAge(true)">18~#</a><a (click)="sortAge()">#~18</a> <span> Ethnic:</span><a
+        (click)="showEthnic()">{{ ds.filter.ethnic }}</a> <span> Category:</span><a
+        (click)="showCategory()">{{ ds.filter.category }}</a> <span> Location:</span><a
+        (click)="showLocation()">{{ ds.filter.area }}</a>
+      <span (click)="clearAll()" fa-text>Clear All</span>
+    </div>
+    <div *ngIf="path=='admin-guides'" class="escorts-bar">
+      <span>Date:</span><a (click)="sortDate(true)">Recent-Oldest</a><a (click)="sortDate()">Oldest-Recent</a>
+      <span>Writer:</span><a (click)="sortWriter(true)">A-Z</a><a (click)="sortWriter()">Z-A</a>
+      <span (click)="clearAllGuides()" fa-text>Clear All</span>
+    </div>
+    <div *ngIf="path=='admin-users'" class="escorts-bar user-bar">
+      <ion-row>
+        <ion-col size="4">
+          <span>All Users(Entire Site): </span><a (click)="sortUser('all')">{{auth.allUsers.length}}</a>
+        </ion-col>
+        <ion-col size="4">
+          <span>Online Users(Entire Site): </span><a (click)="sortUser('online')">{{auth.onlineUsers.length}}</a>
+        </ion-col>
+        <ion-col size="4">
+          <span>E-mail:</span><a (click)="sortEmail(true)">#-Z</a><a (click)="sortEmail()">Z-#</a>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="ds.admin.auth" class="fa-menu">
+  <ion-list lines="none">
+    <ion-item (click)="openAdminPage('admin-pending')" [class.active]="path=='admin-pending'" detail>
+      <ion-label>Pending({{getPendingCount()}})</ion-label>
+    </ion-item>
+    <ion-item (click)="openAdminPage('admin-pending-online')" [class.active]="path=='admin-pending-online'" detail>
+      <ion-label>Pending Online</ion-label>
+    </ion-item>
+    <ion-item (click)="openAdminPage('admin-pending-offline')" [class.active]="path=='admin-pending-offline'" detail>
+      <ion-label>Pending Offline</ion-label>
+    </ion-item>
+    <ion-item (click)="openAdminPage('admin-notification')" [class.active]="path=='admin-notification'" detail>
+      <ion-label>Notification</ion-label>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label class="ion-text-right">
+        Users&Contents:
+      </ion-label>
+    </ion-list-header>
+    <ion-item (click)="openAdminPage('admin-escorts')" [class.active]="path=='admin-escorts'" detail>
+      <ion-label>Escorts({{getEscortCount()}})</ion-label>
+    </ion-item>
+    <ion-item (click)="openAdminPage('admin-guides')" [class.active]="path=='admin-guides'" detail>
+      <ion-label>Guides({{getGuideCount()}})</ion-label>
+    </ion-item>
+    <ion-item (click)="openAdminPage('admin-users')" [class.active]="path=='admin-users'" detail>
+      <ion-label>Users</ion-label>
+    </ion-item>
+    <ion-item (click)="openAdminPage('admin-documents')" [class.active]="path=='admin-documents'" detail>
+      <ion-label>Documents</ion-label>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label class="ion-text-right">
+        Layout:
+      </ion-label>
+    </ion-list-header>
+    <ion-item (click)="openAdminPage('admin-home')" [class.active]="path=='admin-home'" detail>
+      <ion-label>Home Page</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>

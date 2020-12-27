@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Change Email</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="auth.authUser" class="fuck-input">
+    <ion-label>Current Email</ion-label>
+    <ion-input type="text" [(ngModel)]="auth.authUser.email" disabled></ion-input>
+  </div>
+  <div class="fuck-input">
+    <ion-label>New Email</ion-label>
+    <ion-input type="text" [(ngModel)]="newEmail"></ion-input>
+  </div>
+
+  <ion-button fill="outline" expand="full" shape="round" color="medium" class="action-btn" (click)="changeEmail()">
+    Change Email
+  </ion-button>
+</ion-content>

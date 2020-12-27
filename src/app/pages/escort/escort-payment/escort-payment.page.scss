@@ -1,0 +1,108 @@
+.payment-method {
+  background: none;
+  width: 100%;
+  margin: 0;
+  box-shadow: none;
+
+  ion-card-header {
+    color: var(--ion-color-medium);
+    padding-left: 0;
+    font-size: 17px;
+  }
+
+  ion-col[size="4"] {
+    margin-bottom: 20px;
+
+    p {
+      color: var(--ion-color-gray-border);
+    }
+  }
+
+  .each-method {
+    border: .55px solid var(--ion-color-gray-border);
+    padding: 10px 0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+
+    ion-icon {
+      font-size: 50px;
+      color: var(--ion-color-gray-border);
+    }
+  }
+
+  .active {
+    .each-method {
+      border: .55px solid var(--ion-color-primary);
+
+      ion-icon {
+        font-size: 50px;
+        color: var(--ion-color-primary);
+      }
+    }
+
+    p {
+      color: var(--ion-color-medium);
+    }
+  }
+
+}
+
+.note {
+  p {
+    color: var(--ion-color-medium);
+
+    span {
+      color: var(--ion-color-gray-border);
+    }
+  }
+}
+
+.card-details {
+  background: none;
+  width: 100%;
+  margin: 0;
+  box-shadow: none;
+
+  ion-card-header {
+    color: var(--ion-color-medium);
+  }
+
+  .card-number,
+  .card-holder {
+    margin: 20px 0px;
+    border: 0.55px solid var(--ion-color-gray-border);
+    padding: 0px 16px;
+    border-radius: 30px;
+    position: relative;
+
+    ion-col[size="12"] {
+      padding: 0;
+    }
+
+    ion-col[size="3"] {
+      ion-icon {
+        vertical-align: middle;
+        transform: translate(-50%, 50%);
+      }
+    }
+
+    span {
+      position: absolute;
+      top: -12px;
+      background: var(--ion-color-dark3);
+      padding: 5px;
+      font-size: 12px;
+      color: var(--ion-color-medium);
+    }
+
+    b {
+      color: var(--ion-color-danger);
+    }
+  }
+}
+
+ion-input {
+  --color: white;
+}

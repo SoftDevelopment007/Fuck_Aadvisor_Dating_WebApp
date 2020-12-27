@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Contact</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon *ngIf="!delete_activation" name="settings-outline" (click)="activate_delete()"></ion-icon>
+      <ion-icon *ngIf="delete_activation" name="trash" (click)="showConfirmAlert()" [class.active]="selected > 0">
+      </ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="escorts.length > 0" class="vscroll" scrollY="true">
+    <div class="ion-text-nowrap">
+      <div *ngFor="let escort of escorts;let i=index" class="escort-slide">
+        <div class="slide-body reddot" (click)="sIndex=i" [class.reddot]="getUnreadMessage(i)">
+          <img [src]="escort.image[0] ? escort.image[0] : ds.escortAvatar" [class.active]="sIndex==i" />
+          <ion-label>{{escort.name}}</ion-label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="active_animation" class="changing"></div>
+
+  <ng-container *ngIf="user && user.type=='escort'">
+    <ion-list *ngIf="contacts[sIndex] && contacts[sIndex].length>0; else noResult;" class="list-contact-page"
+      lines="none">
+      <ng-container *ngFor="let contact of contacts[sIndex]">
+        <ng-container *ngIf="contact.profile_ref | doc | async as profile">
+          <ion-item (click)="escortUserChat(contact, profile)" [class.highlight]="contact['unread_escort']" detail>
+            <ion-checkbox *ngIf="delete_activation" mode="ios" slot="start" [(ngModel)]="contact.checked"
+              class="delete-checkbox" (click)="selectMember(contact)">
+            </ion-checkbox>
+            <ion-label>
+              <h2>{{profile.name || profile.username}}</h2>
+              <p>{{contact.last_message}}</p>
+            </ion-label>
+            <ion-avatar slot="start">
+              <img src="{{profile.avatar_url || ds.default_image}}" />
+            </ion-avatar>
+            <ion-note slot="end" color="secondary">{{contact.created_at | dateFormat}}</ion-note>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <ng-template #noResult>
+      <p class="ion-text-center">
+        No results
+      </p>
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngIf="user && user.type!=='escort'">
+    <ion-list *ngIf="contacts && contacts.length>0; else noResult1;" class="list-contact-page" lines="none">
+      <ng-container *ngFor="let contact of contacts">
+        <ng-container *ngIf="contact.escort_ref | doc | async as escort">
+          <ion-item (click)="userEscortChat(contact, escort)" [class.highlight]="contact['unread_user']" detail>
+            <ion-checkbox *ngIf="delete_activation" mode="ios" slot="start" [(ngModel)]="contact.checked"
+              class="delete-checkbox" (click)="selectMember(contact)">
+            </ion-checkbox>
+            <ion-label>
+              <h2>{{escort.name}}</h2>
+              <p>{{contact.last_message}}</p>
+            </ion-label>
+            <ion-avatar slot="start">
+              <img *ngIf="escort.image" src="{{escort.image[0] || ds.escortAvatar}}" />
+              <img *ngIf="!escort.image" src="{{ds.escortAvatar}}" />
+            </ion-avatar>
+            <ion-note slot="end" color="secondary">{{contact.created_at | dateFormat}}</ion-note>
+          </ion-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+
+    <ng-template #noResult1>
+      <p class="ion-text-center">
+        No results
+      </p>
+    </ng-template>
+  </ng-container>
+
+</ion-content>

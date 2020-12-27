@@ -1,0 +1,88 @@
+ion-title {
+  font-size: 20px;
+}
+
+ion-content {
+  --background: #063c58;
+
+  .search-section {
+    ion-searchbar {
+      padding: 0;
+      color: white;
+      --border-radius: 4px;
+
+      .searchbar-clear-icon {
+        background-image: none;
+      }
+
+      .searchbar-clear-icon:before {
+        font-family: "Ionicons";
+        content: "\f2bf";
+        color: blue;
+      }
+
+      .searchbar-input {
+        font-size: 18px;
+
+        &::placeholder {
+          color: white;
+        }
+      }
+    }
+
+    ion-list {
+      margin-bottom: 8px;
+      background: transparent;
+
+      ion-list-header {
+        margin-bottom: 0;
+        padding-inline-start: 4px;
+        color: var(--ion-color-light);
+        font-size: 16px;
+        font-weight: 300;
+        border-bottom: none;
+        --background: rgba(0, 0, 0, 0.4);
+        align-items: center;
+        text-transform: uppercase;
+
+        ion-icon {
+          margin-right: 8px;
+        }
+      }
+
+      ion-item {
+        --color: white;
+        --background: rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    .sel-suburbs {
+      margin: 0;
+      text-align: center;
+      font-size: 10px;
+    }
+  }
+
+  .apply-section {
+    position: fixed;
+    width: 80%;
+    left: 10%;
+    bottom: 10px;
+    text-align: center;
+
+    img {
+      width: 75px;
+      height: auto;
+    }
+
+    ion-button {
+      color: var(--ion-color-medium);
+      text-transform: capitalize;
+      --border-radius: 4px;
+    }
+
+    .cancel-btn {
+      margin-left: 16px;
+    }
+  }
+}

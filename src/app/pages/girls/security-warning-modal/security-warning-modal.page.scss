@@ -1,0 +1,22 @@
+ion-content {
+  --background: red;
+  --border-radius: 8px;
+
+  h2 {
+    margin-top: 16px !important;
+  }
+
+  ion-button {
+    --color: var(--ion-color-primary);
+    --background: white;
+    --border-radius: 8px;
+  }
+
+  a {
+    display: block;
+    padding: 8px;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

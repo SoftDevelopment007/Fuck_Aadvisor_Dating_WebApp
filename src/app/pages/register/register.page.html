@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="close()">{{'close' | translate}}</ion-button>
+    </ion-buttons>
+    <ion-title>{{'become_member' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center ion-margin ion-padding-top">
+    <img src="/assets/images/fa-logo-{{ds.user.lang}}.png" height="50" />
+  </div>
+
+  <form class="ion-padding" [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+    <ion-item class="fuck-item">
+      <ion-label position="floating" color="light">{{'email' | translate}}</ion-label>
+      <ion-input type="text" formControlName="email" autocomplete="doNotAutoComplete"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div
+          class="error"
+          *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)"
+        >
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item class="fuck-item">
+      <ion-label position="floating" color="light">{{'password' | translate}}</ion-label>
+      <ion-input type="password" formControlName="password" autocomplete="doNotAutoComplete" required></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div
+          class="error"
+          *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)"
+        >
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-button expand="full" class="fuck-btn" type="submit" [disabled]="!registerForm.valid">
+      {{'register' | translate}}
+    </ion-button>
+  </form>
+
+  <div class="ion-margin-vertical separator">{{'or' | translate}}</div>
+
+  <div class="ion-margin-horizontal">
+    <ion-button expand="full" color="light" (click)="loginWithGoogle()">
+      <img src="/assets/icon/google-icon.png" height="50" />
+      {{'continue_with_google' | translate}}
+    </ion-button>
+  </div>
+</ion-content>

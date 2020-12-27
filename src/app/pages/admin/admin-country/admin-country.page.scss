@@ -1,0 +1,19 @@
+ion-grid {
+  max-width: 320px;
+  margin-left: 0;
+
+  ion-row {
+    margin: 8px 0;
+  }
+
+  ion-col {
+    color: #000000;
+    font-size: 20px;
+  }
+
+  .change-btn {
+    color: #0000ff;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

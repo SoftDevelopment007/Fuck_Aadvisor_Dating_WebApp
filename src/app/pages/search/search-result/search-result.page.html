@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="light" (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="searchWord" class="fuck-searchbar" disabled>
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="type" class="segment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="girl">
+      <ion-label>
+        <img src="/assets/icon/saved-girl-icon.png" />
+        Girls
+      </ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="guide">
+      <ion-label>
+        <img src="/assets/icon/saved-guide-icon.png" />
+        Guides
+      </ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="type">
+    <ion-grid *ngSwitchCase="'girl'">
+      <p *ngIf="girls.length == 0" class="ion-text-center">
+        There are no results for "{{searchWord}}"
+      </p>
+      <ion-row class="girls-list">
+        <ion-col *ngFor="let girl of girls" size="6">
+          <div class="girl-card" [ngClass]="{ 'top-girl': girl.gold }">
+            <div>
+              <img [src]="girl.img" class="girl-image" />
+              <div class="girl-age">{{ girl.age }} years</div>
+              <ion-row class="girl-bottom">
+                <ion-col class="top-icon"></ion-col>
+                <ion-col class="dot-online" [ngClass]="{'offline': !girl.online}">
+                  <span>&nbsp;</span>
+                </ion-col>
+                <ion-col class="girl-info">
+                  <p>{{ girl.name }}</p>
+                  <span class="girl-city">{{ girl.suburbs }}</span>
+                </ion-col>
+              </ion-row>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngSwitchCase="'guide'">
+      <ng-container *ngIf="guides">
+        <p *ngIf="guides.length == 0" class="ion-text-center">
+          There are no results for "{{searchWord}}"
+        </p>
+        <ng-container *ngFor="let g of guides;let i=index;">
+          <app-fuck-guide [guide]="g" remove="1"></app-fuck-guide>
+        </ng-container>
+      </ng-container>
+    </ion-grid>
+  </div>
+</ion-content>

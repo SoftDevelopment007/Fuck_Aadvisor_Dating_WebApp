@@ -1,0 +1,48 @@
+<app-escort-header :href="tabs/escort/service"></app-escort-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-card class="availability">
+      <ion-card-header class="ion-no-padding">
+        AVAILABILITY
+      </ion-card-header>
+      <ion-card-content class="ion-no-padding">
+        <ion-row class="checkbox-agree">
+          <ion-col size="5">
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-checkbox slot="start" [(ngModel)]="scheduleStatus" class="fuck-checkbox"
+                (click)="updateStatus('schedule')">
+              </ion-checkbox>
+              <ion-label>Schedule</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col size="7">
+            <ion-item lines="none" class="ion-no-padding">
+              <ion-checkbox slot="start" [(ngModel)]="ds.escort.contactStatus" class="fuck-checkbox"
+                (click)="updateStatus('contact')">
+              </ion-checkbox>
+              <ion-label>Contact to confirm</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-grid *ngIf="scheduleStatus" class="time">
+      <ion-row *ngFor="let schedule of ds.escort.schedules">
+        <ion-col size="3">{{schedule.name}}</ion-col>
+        <ion-col size="9" class="ion-text-right">
+          <ion-datetime displayFormat="hh:mm a" [(ngModel)]="schedule.from"></ion-datetime>
+          <span class="to">to</span>
+          <ion-datetime displayFormat="hh:mm a" [(ngModel)]="schedule.to"></ion-datetime>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" (click)="goGold()" [class.fieldDisabled]="!checkSchedule()">
+    Next
+  </ion-button>
+
+  <div class="escort-step">Step 2 of 4 Escort Service</div>
+</ion-content>

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/escort"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Become an Escort</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid class="upload-certification">
+    <ion-row class="title">
+      UPLOAD CERTIFICATION (ONE)<span class="field-required">*</span>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5" class="ion-text-center cert-image" (click)="clickCertification()">
+        <img *ngIf="ds.escort.certification" [src]="ds.escort.certification">
+        <ion-icon *ngIf="!ds.escort.certification" name="image"></ion-icon>
+        <p>Upload certification</p>
+        <input type="file" (change)="uploadCertification($event)" #fileInp style="display:none" />
+      </ion-col>
+      <ion-col size="7">
+        <ul>
+          <li>NZ Drives License</li>
+          <li>Passport</li>
+          <li>Brothel operator certificate</li>
+          <li>18+ Card</li>
+        </ul>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row class="disclosure-term">
+      <ion-col size="6" class="ion-text-center">
+        <a (click)="downloadPDF('disclosure')">Disclosure Statement</a>
+        <span class="field-required">*</span>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <a (click)="downloadPDF('terms')">Terms & Conditions</a>
+        <span class="field-required">*</span>
+      </ion-col>
+    </ion-row>
+    <ion-row class="checkbox-agree">
+      <ion-col size="6" class="ion-text-center">
+        <ion-item lines="none">
+          <ion-checkbox [(ngModel)]="disclosure_agree" slot="start"></ion-checkbox>
+          <ion-label>Agree</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center">
+        <ion-item lines="none">
+          <ion-checkbox [(ngModel)]="terms_agree" slot="start"></ion-checkbox>
+          <ion-label>Agree</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" (click)="goPhoto()"
+    [ngClass]="{'fieldDisabled': !ds.escort.certification || !disclosure_agree || !disclosure_agree}">
+    Next
+  </ion-button>
+
+  <div class="escort-step">Step 1 of 4 Escort Details</div>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-content class="ion-padding">
+  <div class="view-sample">
+    <button ion-button icon-only (click)="closeModal()" class="close-modal">
+      <ion-icon name="close"></ion-icon>
+    </button>
+    <p class="ion-no-margin ion-padding sample-header">Pro Photos & Video</p>
+    <ion-grid class="sample-body">
+      <p>Get The Look!</p>
+      <ion-row *ngIf="proPhoto">
+        <ion-col size="5">
+          <img [src]="proPhoto.photo">
+        </ion-col>
+        <ion-col size="7">
+          <video controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline"
+            class="videoPlayer" loop>
+            <source [src]="proPhoto.video" type="video/mp4" />
+          </video>
+        </ion-col>
+      </ion-row>
+      <ion-button expand="full" shape="round" (click)="addCart()" class="add-cart-btn">Add To Cart</ion-button>
+    </ion-grid>
+  </div>
+</ion-content>

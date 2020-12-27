@@ -1,0 +1,67 @@
+<app-fuck-header :type="girl" :route="manage"></app-fuck-header>
+
+<ion-content>
+  <ion-label class="ion-text-right escort-filters">
+    {{'Arrange By' | translate}}:
+    <a (click)="sortByDate()" [class.selected]="sortDate">{{'By Date' | translate}}</a>
+    <a (click)="sortByName()" [class.selected]="!sortDate">{{'By Name' | translate}}</a>
+  </ion-label>
+
+  <ion-card *ngFor="let escort of getEscorts()" class="escort-card">
+    <div class="card-body">
+      <ion-row>
+        <ion-col size="3" class="escort-img">
+          <ion-badge *ngIf="checkUnread(escort)">{{ checkUnread(escort) }}</ion-badge>
+          <img [src]="escort.image[0] ? escort.image[0] : ds.escortAvatar" />
+          <div *ngIf="checkUnread(escort)" class="new-msg">New Message</div>
+        </ion-col>
+        <ion-col size="9">
+          <ion-row class="basic-info">
+            <ion-col size="10">
+              <h3>{{ escort.name }} - {{ escort.age }}</h3>
+              <ion-label>{{ escort.suburbs }}</ion-label>
+            </ion-col>
+            <ion-col size="2" class="edit-icon">
+              <ion-icon name="create-outline" (click)="editEscort(escort)"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="9">
+              <div class="upgrades">
+                <ion-label *ngFor="let upgrade of getUpgrades(escort)">{{ upgrade }}</ion-label>
+              </div>
+            </ion-col>
+            <ion-col size="3">
+              <ion-button fill="outline" class="upgrade-btn" (click)="upgrade(escort)">
+                {{'Upgrade' | translate}}
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <p *ngIf="escort.usage==1" class="take-offline" (click)="takeOffline(escort)">Take Offline</p>
+    </div>
+    <div *ngIf="escort.edit" class="request-card">
+      <h3>Edit Request Pending...</h3>
+      <a (click)="cancelEditRequest(escort)">Cancel Request</a>
+    </div>
+    <div *ngIf="escort.usage==0" class="request-card">
+      <h2 (click)="activeEscort(escort)">ACTIVATE</h2>
+      <button ion-button (click)="deleteEscort(escort)">Permanently Delete</button>
+    </div>
+    <div *ngIf="escort.usage==2" class="request-card">
+      <h3>Offline Request Pending...</h3>
+      <a (click)="cancelOfflineRequest(escort)">Cancel Request</a>
+    </div>
+    <div *ngIf="escort.usage==-1" class="request-card">
+      <h3>Getting Your Upgrades...<br />This takes 1-3 business days</h3>
+    </div>
+  </ion-card>
+
+  <div class="add-girl-btn">
+    <ion-button expand="full" shape="round" (click)="goBecomeEscort()">
+      <ion-icon name="add-circle"></ion-icon>
+      {{'Add Another Girl' | translate}}
+    </ion-button>
+  </div>
+</ion-content>

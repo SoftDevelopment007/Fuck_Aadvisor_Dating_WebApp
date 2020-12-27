@@ -1,0 +1,79 @@
+<app-escort-header :href="tabs/escort/certification"></app-escort-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="title">
+        PHOTOS {{ ds.escort.image.length }}/20
+        <span *ngIf="submitted && ds.escort.image.length < 1 && !photoStatus" class="field-required">
+          Minimum of 1 photo is required</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col *ngFor="let image of ds.escort.image; let i = index" size="4">
+        <div class="girl-card" [class.mainImage]="i == 0">
+          <img [src]="image" />
+          <span>
+            <ion-icon name="trash" (click)="deleteImage(i)"></ion-icon>
+          </span>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="img-default">
+        <div class="girl-card" (click)="chooseImage()" [ngClass]="{ fieldDisabled: ds.escort.pro }">
+          <span>
+            <ion-icon name="camera"></ion-icon>
+          </span>
+          <input type="file" (change)="uploadImage($event)" #escortImage accept="image/*;capture=camera"
+            style="display:none" />
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <p>(the first photo will be the main image)</p>
+
+    <ion-row>
+      <ion-col size="12" class="title"> VIDEO {{ ds.escort.video ? '1' : '0' }}/1 </ion-col>
+    </ion-row>
+    <ion-row class="video-cam">
+      <ion-col size="4">
+        <div class="girl-card" (click)="chooseVideo()" [ngClass]="{ fieldDisabled: ds.escort.pro }">
+          <span>
+            <ion-icon name="videocam"></ion-icon>
+          </span>
+          <input type="file" (change)="uploadVideo($event)" #escortVideo accept="video/mp4,video/x-m4v,video/*"
+            style="display:none" />
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-text class="ion-text-center ion-display-block">OR</ion-text>
+    <div class="ion-text-center get-from-photo">
+      <ion-row>
+        <ion-col size="8" class="pro-left">
+          <ion-checkbox [(ngModel)]="photoStatus" (ionChange)="updateProPhoto()"></ion-checkbox>
+          <span>Professional Photos and Video</span>
+        </ion-col>
+        <ion-col *ngIf="proPhoto" size="4" class="pro-price">
+          <p>
+            <a>${{ proPhoto.cost }}</a> <a>{{ proPhoto.price == 0 ? 'Free' : '$' + proPhoto.price }}</a>
+          </p>
+          <span>Limited time only</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="more-views">
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+        <ion-col>87% more views</ion-col>
+      </ion-row>
+      <span class="view-sample" (click)="openViewSample()">View Sample</span>
+    </div>
+  </ion-grid>
+
+  <ion-button expand="full" class="ion-margin-top fuck-btn" (click)="goPersonal()"
+    [ngClass]="{ fieldDisabled: ds.escort.image.length < 1 && !ds.escort.pro }">
+    Next
+  </ion-button>
+
+  <div class="escort-step">Step 1 of 4 Escort Details</div>
+</ion-content>

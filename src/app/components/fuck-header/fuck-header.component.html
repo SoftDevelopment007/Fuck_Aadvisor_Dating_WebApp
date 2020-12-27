@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons *ngIf="label" slot="start">
+      <ion-button fill="outline" class="fuck-btn" (click)="openPost()">
+        {{ label | translate }}
+      </ion-button>
+      <ion-searchbar (click)="goSearchPage()"></ion-searchbar>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/images/fa-logo-{{ ds.user.lang }}.png" />
+      <ion-label>{{ ds.userCountry?.code }}</ion-label>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-label class="me-lang" (click)="selectLanguage()">
+        <img src="assets/icon/{{ userLang }}-flag.svg" />
+        <span>{{ getLangName() }}</span>
+      </ion-label>
+      <ion-button routerLink="/tabs/contact" routerDirection="forward">
+        <ion-badge *ngIf="ds.notification" color="danger">&nbsp;</ion-badge>
+        <img src="/assets/images/sms.png" width="22" height="22" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

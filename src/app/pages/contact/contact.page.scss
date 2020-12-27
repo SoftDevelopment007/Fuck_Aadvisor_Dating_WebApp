@@ -1,0 +1,160 @@
+ion-toolbar {
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+ion-content {
+  --color: var(--ion-color-dark3);
+  --background: #ececec;
+
+  .vscroll {
+    min-height: 90px;
+    background-color: var(--ion-color-toolbar-bg);
+  }
+}
+
+.list-contact-page {
+  ion-item {
+    --background: #ececec;
+  }
+
+  ion-note {
+    margin-top: 4px !important;
+    font-size: 12px;
+  }
+
+  .arrow {
+    color: var(--ion-color-gray-border);
+    font-size: 24px;
+  }
+
+  button,
+  ion-item {
+    h2 {
+      color: #000;
+      font-weight: 500;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    p {
+      display: -webkit-box;
+      min-height: 30px;
+      max-height: 35px;
+      color: --ion-color-toolbar-bg;
+      font-size: 14px;
+      white-space: normal;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  .highlight {
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    p {
+      max-height: 45px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    ion-note {
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+}
+
+ion-avatar img {
+  object-fit: cover;
+}
+
+.escort-slide {
+  position: relative;
+  display: inline-grid;
+  margin: 16px 0 16px 16px;
+
+  .slide-body {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+
+      &.active {
+        border: 2px solid var(--ion-color-primary);
+      }
+    }
+
+    ion-label {
+      margin-left: 8px;
+      color: #ffffff;
+    }
+  }
+
+  .reddot::before {
+    top: 10px;
+    left: 55px;
+  }
+}
+
+.changing {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: colorchange 0.5s;
+  -webkit-animation: colorchange 0.5s;
+  background-color: #242424;
+  z-index: 1;
+}
+
+.icon-trash {
+  font-size: 1.8em;
+
+  &.active {
+    color: #e7501f;
+  }
+}
+
+.icon-setting {
+  font-size: 1.8em;
+}
+
+.confirm-alert {
+  .alert-wrapper {
+    border-radius: 15px;
+  }
+}
+
+@-webkit-keyframes colorchange {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes colorchange {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
